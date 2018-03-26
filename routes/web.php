@@ -1,6 +1,22 @@
 <?php
 
 /*
+App::bind('App\Billing\Stripe', function(){
+	return new App\Billing\Stripe(config('services.stripe.secret'));
+});
+*/
+
+//$stripe = App::make('App\Billing\Stripe');
+//$stripe = resolve('App\Billing\Stripe');
+//$stripe = app('App\Billing\Stripe');
+//App::instance('\App\Billing\Stripe', $stripe); // do not work ???
+
+//dd($stripe->greeting('Hi'));
+
+
+
+
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -18,6 +34,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/tutorial', 'TutorialController@index');
 
 Route::get('/',                       'PostController@index');
 Route::get('/posts/{post}',           'PostController@show');

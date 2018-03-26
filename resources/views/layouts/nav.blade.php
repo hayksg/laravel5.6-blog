@@ -9,6 +9,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto"> 
                         <li><a class="nav-link" href="#">About Us</a></li>
+                        <li><a class="nav-link" href="/tutorial">Tutorial</a></li>
 
                         @if(auth()->user())
                         <li><a class="nav-link" href="/admin">Admin</a></li>
