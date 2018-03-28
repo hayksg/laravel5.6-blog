@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\User;
+use App\Mail\Welcome;
 
 class RegisterController extends Controller
 {
@@ -63,10 +64,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        \Mail::to($user)->send(new Welcome($user));
+        
+        session()->flash('message', 'Thanks so much for signing up!');
+        //session('message', 'Thanks so much for signing up!');
+        
+        return $user;
     }
 }

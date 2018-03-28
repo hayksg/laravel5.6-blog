@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('content')     
+@section('content')
 
     @if(! $posts || count($posts) == 0)
       <h2 class="blog-post-title">There are no any posts yet</h2>

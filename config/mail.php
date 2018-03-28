@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'blog@laravel.com'),
+        'name' => env('MAIL_FROM_NAME', 'Laravel-Blog'),
     ],
 
     /*
@@ -113,7 +113,8 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+        //'theme' => 'default',
+        'theme' => 'blog',
 
         'paths' => [
             resource_path('views/vendor/mail'),

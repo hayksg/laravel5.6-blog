@@ -42,6 +42,12 @@ class PostController extends Controller
 
 
     	//return view('index', compact('posts', 'archives'));
+                
+                //$value = session('key', 'default');
+                //dd($value);
+                
+                //session(['message' => 'Thanks so much for signing up!']);
+                //session()->flash('message', 'Thanks so much for signing up!');
 
     	return view('index', compact('posts'));
     }

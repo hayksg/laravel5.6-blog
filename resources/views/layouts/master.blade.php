@@ -1,7 +1,7 @@
 @include('layouts/header')
 @include('layouts/nav')
 @include('layouts/top')
-
+@include('layouts/flash')
 
 <div class="container">
 

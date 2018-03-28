@@ -31,6 +31,10 @@ $(function(){
         question: 'Are you sure?',
         noText: 'Cancel'
     });
+    
+    //
+    
+    $('#flash-message').delay(5000).fadeOut('slow');
 
    
 

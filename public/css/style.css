@@ -234,3 +234,10 @@ div.app-dropdown-logout {
 textarea {
     min-height: 200px;
 }
+
+#flash-message {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    z-index: 10;
+}

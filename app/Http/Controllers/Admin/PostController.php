@@ -53,6 +53,8 @@ class PostController extends Controller
         */
 
         auth()->user()->publish(new Post(request(['title', 'content'])));
+        
+        session()->flash('message', 'The post successfully created!');
 
     	return redirect('/admin/posts');
     }
