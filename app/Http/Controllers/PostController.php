@@ -27,7 +27,8 @@ class PostController extends Controller
 
 		//$posts = Post::latest()->filter(request()->only('month', 'year'))->get();
 		//$posts = Post::latest()->filter(request(['month', 'year']))->get();
-		$posts = Post::latest()->filter(request(['month', 'year']))->paginate(1)->appends(request()->query());
+                $perPage = 4;
+		$posts = Post::latest()->filter(request(['month', 'year']))->paginate($perPage)->appends(request()->query());
 		//$posts = Post::latest()->filter(request()->only(['month', 'year']))->get();
 		
 

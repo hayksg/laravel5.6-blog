@@ -32,10 +32,11 @@ $(function(){
         noText: 'Cancel'
     });
     
-    //
+    // For Flash messenger
     
     $('#flash-message').delay(5000).fadeOut('slow');
-
+    
+    //
    
 
 });

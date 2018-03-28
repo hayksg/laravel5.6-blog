@@ -18,7 +18,7 @@
       <hr>
 
       @endforeach
-
+      
       <!-- @include('layouts.pagination') -->
       {{ $posts->links('layouts.pagination', ['posts' => $posts]) }}
 

@@ -241,3 +241,11 @@ textarea {
     right: 20px;
     z-index: 10;
 }
+
+ a.btn.disabled, fieldset:disabled a.btn {
+    pointer-events: auto;
+}
+
+ .link-disabled:hover {
+    cursor: not-allowed !important;
+ }
