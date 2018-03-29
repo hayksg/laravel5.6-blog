@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tag;
+use App\PostTag;
 
 class PostController extends Controller
 {
@@ -16,7 +18,8 @@ class PostController extends Controller
     public function index()
     {
         $cnt   = 0;
-    	$posts = Post::get();
+    	//$posts = Post::get();
+    	$posts = Post::with('tags')->get();
 
     	return view('admin.posts.index', compact('posts', 'cnt'));
     }
@@ -28,22 +31,39 @@ class PostController extends Controller
 
     public function store()
     {
+        $tags = request('tag');
+        
+        Tag::saveTag($tags);
+        
     	$this->validate(request(), [
-    		'title'   => 'required',
-    		'content' => 'required',
+            'title'       => 'required|unique:posts,title',
+            'content'     => 'required',          
+            'description' => 'required',
     	]);
 
-    	$title   = trim(htmlentities(request('title'), ENT_QUOTES));
-    	$content = trim(htmlentities(request('content'), ENT_QUOTES));
+    	$title       = trim(htmlentities(request('title'), ENT_QUOTES));
+    	$content     = trim(htmlentities(request('content'), ENT_QUOTES));
+    	$description = trim(htmlentities(request('description'), ENT_QUOTES));
 
-        /*
     	$post = new Post();
     	$post->user_id = auth()->id();
     	$post->title   = $title;
+    	$post->description   = $description;
     	$post->content = $content;
-    	$post->save();
-        */
+        
+        if (request()->hasFile('file')) {
+            $filePath  = basename(request()->file->store('public/upload'));
+            $post->img = $filePath;
+        }
 
+    	$res = $post->save();
+        
+        $tags = explode(' ', $tags);
+        foreach ($tags as $tagName) {
+            $tag = Tag::where('name', $tagName)->first();
+            $post->tags()->attach($tag); 
+        }
+        
         /*
         Post::create([
             'user_id' => auth()->id(),
@@ -52,7 +72,7 @@ class PostController extends Controller
         ]);
         */
 
-        auth()->user()->publish(new Post(request(['title', 'content'])));
+        //auth()->user()->publish(new Post(request(['title', 'content'])));
         
         session()->flash('message', 'The post successfully created!');
 

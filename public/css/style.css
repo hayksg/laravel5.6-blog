@@ -187,9 +187,6 @@ div.app-dropdown-logout {
  * Blog posts
  */
 
-.blog-post {
-  margin-bottom: 4rem;
-}
 .blog-post-title {
   margin-bottom: .25rem;
   font-size: 1.5rem;
@@ -249,3 +246,29 @@ textarea {
  .link-disabled:hover {
     cursor: not-allowed !important;
  }
+
+/* Block for input type file */
+
+.jfilestyle {
+    display: block;
+}
+
+div.jfilestyle.jfilestyle-theme-custom input {
+    border-radius: .25rem;
+    background: #FFF;
+}
+
+div.jfilestyle.jfilestyle-theme-custom label {
+    border: 1px solid #007BFF;
+    border-radius: .25rem;
+}
+
+.admin-img {
+    width: 70px;
+    height: 40px;
+}
+
+.admin-img-edit {
+    width: 250px;
+    height: 170px;
+}

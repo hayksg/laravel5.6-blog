@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Services\Greeting;
+use App\Services\GetYear;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,10 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('layouts.sidebar', function($view){
             $view->with('archives', \App\Post::getArchives());
+            $view->with('tags', \App\Tag::has('posts')->pluck('name'));
         });
+        
+        \Blade::setEchoFormat('nl2br(e(%s))');
     }
 
     /**
@@ -34,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
         // $this->app->bind(Greeting::class, function(){
         $this->app->singleton(Greeting::class, function(){
             return new Greeting();
+        });
+        
+        $this->app->bind(GetYear::class, function(){
+            return new GetYear();
         });
     }
 }

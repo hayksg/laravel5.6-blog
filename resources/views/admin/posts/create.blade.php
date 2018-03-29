@@ -3,25 +3,43 @@
 @section('content')          
 
     <div class="blog-post">
-		<h3 class="blog-post-title mb-4">Create post</h3>
+        <h3 class="blog-post-title mb-4">Create post</h3>
+        <hr>
 
-		@include('layouts.errors')
+        @include('layouts.errors')
 
-		<form action="/admin/posts" method="post">
-			{{ csrf_field() }}
+        <form action="/admin/posts" method="post" enctype="multipart/form-data">
+            {{ csrf_field() }}
 
-			<div class="form-group">
-				<label for="title">Title:</label>
-				<input type="text" class="form-control" id="title" name="title" required>
-			</div>
-			<div class="form-group">
-				<label for="content">Content:</label>
-				<textarea class="form-control" id="content" name="content" required></textarea>
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary">Publish</button>
-			</div>
-		</form>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea class="form-control" id="content" name="content" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="tag">Tags:</label>
+                <input type="text" class="form-control" id="tag" name="tag" required>
+            </div>
+
+            <div class="form-group">             
+                <label for="file">Image:</label> 
+                <input type="file" name="file" id="file" class="form-control filestyle">
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Publish</button>
+            </div>
+        </form>
       
     </div><!-- /.blog-post -->
 

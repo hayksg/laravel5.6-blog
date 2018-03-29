@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
-    protected $fillable = ['user_id', 'title', 'content'];
+    protected $fillable = ['user_id', 'title', 'content', 'description', 'img'];
 
     public function user()
     {
@@ -47,5 +47,13 @@ class Post extends Model
     	                ->groupBy('year', 'month')
     	                ->orderByRaw('min(created_at) asc')
     	                ->get();
+    }
+    
+    public function tags()
+    {
+        // 1 post may have many tags
+        // 1 tag may applied to many posts
+        
+    	return $this->belongsToMany(Tag::class);
     }
 }

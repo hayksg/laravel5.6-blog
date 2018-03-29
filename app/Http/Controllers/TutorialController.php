@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Greeting;
+use App\Services\GetYear;
 
 class TutorialController extends Controller
 {
@@ -11,6 +12,8 @@ class TutorialController extends Controller
     {
     	//$greeting = app(Greeting::class)->sayHello('Hi');
     	$greeting = resolve(Greeting::class)->sayHello('Howdy');
-    	return view('tutorial.index', compact('greeting'));
+        $year = app(GetYear::class)();
+        
+    	return view('tutorial.index', compact('greeting', 'year'));
     }
 }

@@ -40,6 +40,7 @@ Route::get('/tutorial', 'TutorialController@index');
 Route::get('/',                       'PostController@index');
 Route::get('/posts/{post}',           'PostController@show');
 Route::post('/posts/{post}/comments', 'CommentController@store');
+Route::get('/posts/tags/{tag}',       'TagController@index');
 
 Route::get('/admin',                   'Admin\AdminController@index');
 Route::get('/admin/posts',             'Admin\PostController@index');

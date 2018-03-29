@@ -6,14 +6,28 @@
       <h2 class="blog-post-title">There are no any post yet</h2>
     @else
 
-      <div class="blog-post">
-        <h2 class="blog-post-title">{{ $post->title }}</h2>
-        <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }} by <strong>{{ $post->user->name }}</strong></p>
+      <div class="blog-post mb-2">
+        <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid" alt="image">
+        <h2 class="blog-post-title mt-4">{{ $post->title }}</h2>
+        <p class="blog-post-meta">
+            <i class="fa fa-calendar"></i>&nbsp;&nbsp;{{ $post->created_at->toFormattedDateString() }} by 
+            <strong>{{ $post->user->name }}</strong>
+        </p>
 
         <p>{{ $post->content }}</p>
-        <div><a href="/" class="btn btn-outline-primary btn-sm">&larr; Back</a></div>
+        <hr>
+        
+        @if(count($post->tags))
+        <ul class="list-unstyled list-inline">
+            <strong>Tags:</strong>&nbsp;&nbsp;
+            @foreach($post->tags as $tag)
+            <li class="list-inline-item"><small><a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a></small></li>
+            @endforeach
+        </ul>
+        @endif
+
       </div>
-      <hr>
+      <hr class="mb-5">
 
       @if($post->comments && count($post->comments) > 0)
 

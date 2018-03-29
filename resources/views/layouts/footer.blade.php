@@ -7,7 +7,8 @@
 
     <script src="/js/jquery.js" type="text/javascript"></script>
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/js/app-script.js" type="text/javascript"></script>
     <script src="/js/j-confirm-action.js" type="text/javascript"></script>
+    <script src="/js/jquery-filestyle.min.js" type="text/javascript"></script>
+    <script src="/js/app-script.js" type="text/javascript"></script>
   </body>
 </html>

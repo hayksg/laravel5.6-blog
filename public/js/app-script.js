@@ -37,6 +37,30 @@ $(function(){
     $('#flash-message').delay(5000).fadeOut('slow');
     
     //
+    
+    if ($(document).width() > 432 && $(document).width() < 992) {
+        $(":file").jfilestyle({
+            theme: "custom",
+            inputSize: "300px"
+        });
+    } else if ($(document).width() > 338 && $(document).width() <= 432) {
+        $(":file").jfilestyle({
+            theme: "custom",
+            inputSize: "200px"
+        }); 
+    } else if ($(document).width() <= 338) {
+        $(":file").jfilestyle({
+            theme: "custom",
+            input: false
+        });  
+    } else {
+        $(":file").jfilestyle({
+            theme: "custom",
+            inputSize: "400px"
+        });
+    }
+    
+    ///
    
 
 });

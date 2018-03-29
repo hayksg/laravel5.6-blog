@@ -10,12 +10,17 @@
 
       <div class="blog-post">
         <h2 class="blog-post-title">{{ $post->title }}</h2>
-        <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }} by <strong>{{ $post->user->name }}</strong></p>
+        <p class="blog-post-meta">
+            <i class="fa fa-calendar"></i>&nbsp;&nbsp;{{ $post->created_at->toFormattedDateString() }} by 
+            <strong>{{ $post->user->name }}</strong>
+        </p>
 
-        <p>{{ $post->content }}</p>
+        <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid" alt="image">
+        
+        <p class="mt-4">{{ $post->description }}</p>
         <div><a href="/posts/{{ $post->id }}" class="btn btn-outline-primary btn-sm">Read more &rarr;</a></div>
       </div>
-      <hr>
+      <hr class="my-5">
 
       @endforeach
       

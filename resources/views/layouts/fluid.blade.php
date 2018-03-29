@@ -1,19 +1,17 @@
 @include('layouts/header')
 @include('layouts/nav')
-@include('layouts/top')
 @include('layouts/flash')
 
-<div class="container">
+
+<div class="container-fluid">
 
     <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-sm-12">
 
             @yield('content')
 
         </div><!-- /.blog-main -->
-
-        @include('layouts.sidebar')
 
     </div><!-- /.row -->
 
