@@ -1,6 +1,7 @@
-@extends('layouts/fluid')
+@extends('layouts-admin/admin')
 
-@section('content')          
+ 
+@section('content') 
 
 <div class="blog-post">
     <h3 class="blog-post-title mb-4">Manage posts</h3>

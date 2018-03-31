@@ -272,3 +272,16 @@ div.jfilestyle.jfilestyle-theme-custom label {
     width: 250px;
     height: 170px;
 }
+
+.select2-container--default .select2-selection--multiple {
+    border-color: #ced4da;
+}
+
+.admin-sidebar {
+    border-right: 1px solid rgba(0,0,0,.1);
+    min-height: 100%;
+}
+
+.admin-sidebar div.blog-post{
+    position: fixed;
+}

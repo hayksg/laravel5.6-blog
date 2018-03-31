@@ -1,4 +1,4 @@
-@extends('layouts/master')
+@extends('layouts-site/master')
 
 @section('content')     
 
@@ -15,9 +15,10 @@
         </p>
 
         <p>{{ $post->content }}</p>
-        <hr>
+        
         
         @if(count($post->tags))
+        <hr>
         <ul class="list-unstyled list-inline">
             <strong>Tags:</strong>&nbsp;&nbsp;
             @foreach($post->tags as $tag)
@@ -42,7 +43,7 @@
 
       @endif
 
-      @include('layouts.errors')
+      @include('layouts-admin.errors')
 
       <form action="/posts/{{ $post->id }}/comments" method="post">
         {{ csrf_field() }}

@@ -38,7 +38,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tutorial', 'TutorialController@index');
 
 Route::get('/',                       'PostController@index');
-Route::get('/posts/{post}',           'PostController@show');
+Route::get('/posts/{post}',           'PostController@show')->name('posts');
 Route::post('/posts/{post}/comments', 'CommentController@store');
 Route::get('/posts/tags/{tag}',       'TagController@index');
 
@@ -49,3 +49,8 @@ Route::post('/admin/posts',            'Admin\PostController@store');
 Route::get('/admin/posts/{post}/edit', 'Admin\PostController@edit');
 Route::delete('/admin/posts/{post}',   'Admin\PostController@destroy');
 Route::put('/admin/posts/{post}',      'Admin\PostController@update');
+
+
+Route::get('/admin/tags',             'Admin\TagController@index');
+Route::get('/admin/tags/{tag}',       'Admin\TagController@show');
+Route::post('/admin/tags',            'Admin\TagController@store');

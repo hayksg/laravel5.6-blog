@@ -7,11 +7,12 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Blog Template for Bootstrap</title>
+    <title>Blog @yield('title', '')</title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/j-confirm-action.css" rel="stylesheet">
     <link href="/css/jquery-filestyle.min.css" rel="stylesheet">
+    <link href="/css/select2.min.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
   </head>

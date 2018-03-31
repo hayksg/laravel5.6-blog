@@ -20,18 +20,4 @@ class Tag extends Model
     {
         return 'name';
     }
-    
-    public static function saveTag($tags)
-    {
-        $tags = explode(' ', $tags);
-        foreach ($tags as $tagName) {
-            $result = static::where('name', $tagName)->get()->toArray();
-        
-            if (is_array($result) && count($result) == 0) { 
-                static::create([
-                    'name' => $tagName,
-                ]);
-            }
-        }
-    }
 }

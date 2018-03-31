@@ -1,7 +1,7 @@
-@include('layouts/header')
-@include('layouts/nav')
-@include('layouts/top')
-@include('layouts/flash')
+@include('layouts-site/header-site')
+@include('layouts-site/nav')
+@include('layouts-site/top')
+@include('layouts-admin/flash')
 
 <div class="container">
 
@@ -13,7 +13,7 @@
 
         </div><!-- /.blog-main -->
 
-        @include('layouts.sidebar')
+        @include('layouts-site.sidebar')
 
     </div><!-- /.row -->
 
@@ -21,4 +21,4 @@
 <br>
 <br>
 <br>
-@include('layouts/footer')
+@include('layouts-site/footer')

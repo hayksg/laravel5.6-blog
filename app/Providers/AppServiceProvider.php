@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.sidebar', function($view){
+        view()->composer('layouts-site.sidebar', function($view){
             $view->with('archives', \App\Post::getArchives());
             $view->with('tags', \App\Tag::has('posts')->pluck('name'));
         });
@@ -42,6 +42,14 @@ class AppServiceProvider extends ServiceProvider
         
         $this->app->bind(GetYear::class, function(){
             return new GetYear();
+        });
+        
+        \Blade::directive('continue', function ($num) {
+            return "<?php continue $num ?>";
+        });
+        
+        \Blade::directive('break', function ($num) {
+            return "<?php break $num ?>";
         });
     }
 }

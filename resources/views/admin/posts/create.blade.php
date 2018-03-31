@@ -1,4 +1,4 @@
-@extends('layouts/admin')
+@extends('layouts-admin/admin')
 
 @section('content')          
 
@@ -6,7 +6,7 @@
         <h3 class="blog-post-title mb-4">Create post</h3>
         <hr>
 
-        @include('layouts.errors')
+        @include('layouts-admin.errors')
 
         <form action="/admin/posts" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
@@ -27,13 +27,17 @@
             </div>
             
             <div class="form-group">
-                <label for="tag">Tags:</label>
-                <input type="text" class="form-control" id="tag" name="tag" required>
+                <label for="tags">Tags:</label>
+                <select multiple class="form-control js-example-basic-multiple" id="tags" name="tags[]" multiple="multiple">
+                    @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">             
                 <label for="file">Image:</label> 
-                <input type="file" name="file" id="file" class="form-control filestyle">
+                <input type="file" name="file" id="file" class="form-control filestyle" required>
             </div>
 
             <div class="form-group mt-4">

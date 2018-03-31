@@ -60,7 +60,10 @@ $(function(){
         });
     }
     
-    ///
+    // For multiple select
+    
+    $('.js-example-basic-multiple').select2();
    
-
+   //
+   
 });

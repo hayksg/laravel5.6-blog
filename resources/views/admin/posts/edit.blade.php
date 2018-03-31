@@ -1,4 +1,4 @@
-@extends('layouts/admin')
+@extends('layouts-admin/admin')
 
 @section('content')          
 
@@ -6,6 +6,8 @@
     
     <h3 class="blog-post-title mb-4">Edit post</h3>
     <hr>
+    
+    @include('layouts-admin.errors')
     
     <form action="/admin/posts/{{ $post->id }}" method="post">
         {{ csrf_field() }}
@@ -28,12 +30,24 @@
         </div>
         
         <div class="form-group">
-            <label for="tag">Tags:</label>
-            <input type="text" class="form-control" id="tag" name="tag" 
-                   value="@foreach($post->tags as $tag){{ $tag->name }}&nbsp;@endforeach"
-            >
+            <label for="tags">Tags:</label>
+            <select multiple class="form-control js-example-basic-multiple" id="tags" name="tags[]" multiple="multiple">
+
+                @foreach($allTags as $key => $tag)
+                
+                    @foreach($post->tags as $postTag)
+                        @if($postTag->name == $tag)
+                            <option value="{{ $key }}" selected>{{ $tag }}</option>
+                            @continue(2)
+                        @endif
+                    @endforeach
+                    
+                    <option value="{{ $key }}">{{ $tag }}</option>
+                @endforeach
+                      
+            </select>
         </div>
-        
+
         <div class="form-group">             
             <label for="file">Image:</label> 
             <div class="my-2">

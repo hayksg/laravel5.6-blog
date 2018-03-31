@@ -1,4 +1,4 @@
-@extends('layouts/master')
+@extends('layouts-site/master')
 
 @section('content')
 
@@ -24,8 +24,8 @@
 
       @endforeach
       
-      <!-- @include('layouts.pagination') -->
-      {{ $posts->links('layouts.pagination', ['posts' => $posts]) }}
+      <!-- @include('layouts-site.pagination') -->
+      {!! $posts->links('layouts-site.pagination', ['posts' => $posts]) !!}
 
     @endif
 
