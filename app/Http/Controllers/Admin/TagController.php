@@ -30,9 +30,9 @@ class TagController extends Controller
 
     public function create()
     {
-    	return view('admin.posts.create');
+    	return view('admin.tags.edit');
     }
-
+    
     public function store()
     { 
         $this->validate(request(), [
@@ -49,15 +49,33 @@ class TagController extends Controller
 
     	return redirect('/admin/tags');
     }
-
-   
-
-   
+    
+    public function edit(Tag $tag)
+    {
+    	return view('admin.tags.edit', compact('tag'));
+    }
+    
+    public function update(Tag $tag)
+    {
+        $this->validate(request(), [
+            'name' => 'required|max:255'
+        ]);
+        
+        $tagName = trim(htmlentities(request('name'), ENT_QUOTES));
+        $tag->name = $tagName;
+        
+        $tag->update();
+        
+        session()->flash('message', 'The tag successfully updated!');
+    	return redirect('/admin/tags');
+    }
 
     public function destroy(Tag $tag)
     {
-        $post->delete();
-
+        $tag->delete();
+        $tag->posts()->detach();
+        
+        session()->flash('message', 'The tag successfully deleted!');
         return redirect('admin/tags');
     }
 }

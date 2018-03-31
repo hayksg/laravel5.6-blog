@@ -120,6 +120,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        $post->tags()->detach();
 
         return redirect('admin/posts');
     }

@@ -9,7 +9,9 @@
       @foreach($posts as $post)
 
       <div class="blog-post">
-        <h2 class="blog-post-title">{{ $post->title }}</h2>
+        <h2 class="blog-post-title">
+            <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+        </h2>
         <p class="blog-post-meta">
             <i class="fa fa-calendar"></i>&nbsp;&nbsp;{{ $post->created_at->toFormattedDateString() }} by 
             <strong>{{ $post->user->name }}</strong>

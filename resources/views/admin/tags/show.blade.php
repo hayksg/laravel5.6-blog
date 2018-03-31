@@ -6,15 +6,22 @@
     <div class="col-sm-6">
         <div class="blog-post">
             <h3 class="blog-post-title mb-4">Tag name: {{ $tag->name }}</h3>
-            <div>Posts count: <small class="badge badge-primary">{{ $tag->posts()->count() }}</small></div>
+            <div>Posts count(s): <small class="badge badge-primary">{{ $tag->posts()->count() }}</small></div>
         </div>
     </div>
     <div class="col-sm-6 text-right">
-        <a href="#" class="btn btn-outline-primary">Edit</a>
+        <a href="/admin/tags/{{ $tag->name }}/edit" class="btn btn-success">Edit</a>
+        <form action="/admin/tags/{{ $tag->name }}" method="post" class="app-delete-form confirm-plugin-delete">
+
+            {{ csrf_field() }}
+
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+        </form>
     </div>
 </div>
 <div class="row my-4">
-    <div class="col-sm-10">
+    <div class="col-sm-12">
         <div class="table-responsive">
             <table class="table">
                 <tr>

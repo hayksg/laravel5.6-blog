@@ -53,4 +53,7 @@ Route::put('/admin/posts/{post}',      'Admin\PostController@update');
 
 Route::get('/admin/tags',             'Admin\TagController@index');
 Route::get('/admin/tags/{tag}',       'Admin\TagController@show');
+Route::put('/admin/tags/{tag}',       'Admin\TagController@update');
+Route::get('/admin/tags/{tag}/edit',  'Admin\TagController@edit');
 Route::post('/admin/tags',            'Admin\TagController@store');
+Route::delete('/admin/tags/{tag}',      'Admin\TagController@destroy');

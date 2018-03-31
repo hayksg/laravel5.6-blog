@@ -277,11 +277,10 @@ div.jfilestyle.jfilestyle-theme-custom label {
     border-color: #ced4da;
 }
 
-.admin-sidebar {
-    border-right: 1px solid rgba(0,0,0,.1);
-    min-height: 100%;
-}
-
 .admin-sidebar div.blog-post{
     position: fixed;
+    border-right: 1px solid rgba(0,0,0,.1);
+    min-height: 100%;
+    overflow: hidden;
+    padding-right: 50px;
 }

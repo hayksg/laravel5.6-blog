@@ -64,6 +64,16 @@ $(function(){
     
     $('.js-example-basic-multiple').select2();
    
-   //
+    //
+   
+    if ($(document).width() < 1330) {
+        $('.admin-sidebar div.blog-post').css('paddingRight', '30px');
+    }
+    if ($(document).width() < 1200) {
+        $('.admin-sidebar div.blog-post').css('position', 'inherit');
+        $('.admin-sidebar div.blog-post').append('<hr>');
+    }
+    
+    //
    
 });

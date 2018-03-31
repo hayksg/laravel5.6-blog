@@ -4,8 +4,15 @@
 @section('content') 
 
 <div class="blog-post">
-    <h3 class="blog-post-title mb-4">Manage posts</h3>
-    <div><a href="/admin/posts/create" class="btn btn-outline-primary">Create post</a></div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="blog-post-title mb-4">Manage posts</h3>
+        </div>
+        <div class="col-sm-6 text-right">
+            <a href="/admin/posts/create" class="btn btn-outline-primary">Create post</a>
+        </div>
+    </div>
+
     <hr>
 
     @if(! $posts || count($posts) == 0)
@@ -37,9 +44,13 @@
                 <td>{{ $post->created_at->toFormattedDateString() }}</td>
                 <td><img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid admin-img" alt="image"></td>
                 <td>
-                    @foreach($post->tags as $tag)
-                    {{ $tag->name }}&nbsp;
-                    @endforeach
+                    @if(! count($post->tags))
+                        <span>No tags</span>
+                    @else
+                        @foreach($post->tags as $tag)
+                        {{ $tag->name }}&nbsp;
+                        @endforeach
+                    @endif
                 </td>
                 <td>
                     <a href="/admin/posts/{{ $post->id }}/edit">Edit</a>
@@ -49,7 +60,7 @@
                         {{ csrf_field() }}
 
                         <input type="hidden" name="_method" value="delete">
-                        <input type="submit" name="fooo" value="Delete">
+                        <input type="submit" name="delete" value="Delete">
                     </form>
                 </td>
             </tr>
