@@ -42,18 +42,20 @@ Route::get('/posts/{post}',           'PostController@show')->name('posts');
 Route::post('/posts/{post}/comments', 'CommentController@store');
 Route::get('/posts/tags/{tag}',       'TagController@index');
 
-Route::get('/admin',                   'Admin\AdminController@index');
-Route::get('/admin/posts',             'Admin\PostController@index');
-Route::get('/admin/posts/create',      'Admin\PostController@create');
-Route::post('/admin/posts',            'Admin\PostController@store');
-Route::get('/admin/posts/{post}/edit', 'Admin\PostController@edit');
-Route::delete('/admin/posts/{post}',   'Admin\PostController@destroy');
-Route::put('/admin/posts/{post}',      'Admin\PostController@update');
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('/admin',                   'Admin\AdminController@index');
+    Route::get('/admin/posts',             'Admin\PostController@index');
+    Route::get('/admin/posts/create',      'Admin\PostController@create');
+    Route::post('/admin/posts',            'Admin\PostController@store');
+    Route::get('/admin/posts/{post}/edit', 'Admin\PostController@edit');
+    Route::delete('/admin/posts/{post}',   'Admin\PostController@destroy');
+    Route::put('/admin/posts/{post}',      'Admin\PostController@update');
 
 
-Route::get('/admin/tags',             'Admin\TagController@index');
-Route::get('/admin/tags/{tag}',       'Admin\TagController@show');
-Route::put('/admin/tags/{tag}',       'Admin\TagController@update');
-Route::get('/admin/tags/{tag}/edit',  'Admin\TagController@edit');
-Route::post('/admin/tags',            'Admin\TagController@store');
-Route::delete('/admin/tags/{tag}',      'Admin\TagController@destroy');
+    Route::get('/admin/tags',             'Admin\TagController@index');
+    Route::get('/admin/tags/{tag}',       'Admin\TagController@show');
+    Route::put('/admin/tags/{tag}',       'Admin\TagController@update');
+    Route::get('/admin/tags/{tag}/edit',  'Admin\TagController@edit');
+    Route::post('/admin/tags',            'Admin\TagController@store');
+    Route::delete('/admin/tags/{tag}',    'Admin\TagController@destroy');
+});

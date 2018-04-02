@@ -11,5 +11,6 @@
     <script src="/js/jquery-filestyle.min.js" type="text/javascript"></script>
     <script src="/js/select2.full.min.js" type="text/javascript"></script>
     <script src="/js/app-script.js" type="text/javascript"></script>
+    <script src="/js/scriptbreaker-multiple-accordion-1.js" type="text/javascript"></script>
   </body>
 </html>

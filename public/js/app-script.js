@@ -1,8 +1,8 @@
 $(function(){
 
-	var pathname = window.location.pathname;
+    var pathname = window.location.pathname;
 
-	// For highlighting menu
+    // For highlighting menu
 
     if (pathname == '/') {
     	$('a.app-navbar-brand').addClass('active');
@@ -74,6 +74,51 @@ $(function(){
         $('.admin-sidebar div.blog-post').append('<hr>');
     }
     
+    // For categories
+    
+    $(".topnav").accordion({
+        accordion:true,
+        speed: 500,
+        closedSign: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+        openedSign: '<i class="fa fa-caret-down" aria-hidden="true"></i>'
+    });
+    
+    // In order don't work link witch has children
+
+    $('ul.topnav li a').on('click', function(){
+        if ($(this).parent('li').has('ul').length != 0) {
+            return false;
+        }
+    });
+	
+    // To add padding to each nested link in menu
+    
+    var menuLinks = $('ul.topnav').find('a');
+
+    menuLinks.each(function(){
+        var parentsUntilLength = $(this).parentsUntil('.sidebar-module').length;
+        var div = parentsUntilLength / 2;
+
+        if (div > 1) {
+            var res = (div - 1) * 20;
+            $(this).css('paddingLeft', res + 'px').css('overflow', 'hidden');
+        }
+    })
+    
+    /// Highlighting for aside menu  ////////////////////////////////////////////////////
+    
+    $('ul.topnav li a').each(function(){
+        var href = $(this).attr('href');
+        
+        if ( (href == pathname) ) {
+            $(this).addClass('highlight');
+        } else {
+            $(this).removeClass('highlight');
+        }
+    });
+    
     //
+    
+    
    
 });

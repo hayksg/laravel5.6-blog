@@ -13,12 +13,9 @@ class CommentController extends Controller
     	$this->validate(request(), [
     		'user_id' => 'integer',
     		'post_id' => 'integer',
-    		'content' => 'required|min:2',
+    		'content' => 'required|min:2|alpha_dash',
     	]);
-
-    	$content = trim(htmlentities(request('content')));
-
-		/*
+        		/*
     	$comment = new Comment();
     	$comment->user_id = auth()->id();
     	$comment->post_id = $post->id;
@@ -34,7 +31,7 @@ class CommentController extends Controller
     	]);
     	*/
 
-    	$post->addComment(auth()->id(), $content);
+    	$post->addComment(auth()->id(), request('content'));
 
     	return back();
     }

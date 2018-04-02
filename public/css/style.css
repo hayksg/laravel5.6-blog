@@ -284,3 +284,25 @@ div.jfilestyle.jfilestyle-theme-custom label {
     overflow: hidden;
     padding-right: 50px;
 }
+
+/* For categories */
+
+ul.topnav ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.topnav span:first-child {   
+    text-align: right;
+    display: inline-block;
+    width: 20px;
+}
+
+a.highlight {
+	color: #008BFF;
+}
+
+/* End block */
+
+

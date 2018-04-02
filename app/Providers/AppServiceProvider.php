@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts-site.sidebar', function($view){
             $view->with('archives', \App\Post::getArchives());
             $view->with('tags', \App\Tag::has('posts')->pluck('name'));
+            $view->with('categories', \App\Category::getCategories());
         });
         
         \Blade::setEchoFormat('nl2br(e(%s))');
