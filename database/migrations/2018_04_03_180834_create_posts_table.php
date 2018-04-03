@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id');
+            $table->integer('category_id')->unsigned();
             $table->integer('user_id');
             $table->string('title')->unique();
             $table->text('description');
@@ -25,6 +25,8 @@ class CreatePostsTable extends Migration
             $table->boolean('is_visible')->default(1);
             $table->index('category_id');
             $table->index('user_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->engine = 'InnoDB';
         });
     }
 

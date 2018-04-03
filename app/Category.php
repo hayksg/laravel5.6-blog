@@ -18,6 +18,16 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
     
+    public function parent()
+    {
+        $parent = $this->where('id', $this->parent_id)->pluck('name')->shift();
+        if (! $parent) {
+            return 'Has no parent';
+        }
+        
+        return $parent;
+    }
+    
     public static function getCategories()
     {
         return static::where('parent_id', null)->get();

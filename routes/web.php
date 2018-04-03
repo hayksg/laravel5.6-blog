@@ -37,14 +37,17 @@ Auth::routes();
 
 Route::group(['middleware' => ['admin']], function () {
     
-    Route::get('/admin',                   'Admin\AdminController@index');
+    Route::get('/admin', 'Admin\AdminController@index');
+    
     Route::get('/admin/posts',             'Admin\PostController@index');
     Route::get('/admin/posts/create',      'Admin\PostController@create');
     Route::post('/admin/posts',            'Admin\PostController@store');
     Route::get('/admin/posts/{post}/edit', 'Admin\PostController@edit');
     Route::delete('/admin/posts/{post}',   'Admin\PostController@destroy');
     Route::put('/admin/posts/{post}',      'Admin\PostController@update');
-
+    
+    Route::get('/admin/categories',        'Admin\CategoryController@index');
+    Route::get('/admin/categories/create', 'Admin\CategoryController@create');
 
     Route::get('/admin/tags',             'Admin\TagController@index');
     Route::get('/admin/tags/{tag}',       'Admin\TagController@show');
