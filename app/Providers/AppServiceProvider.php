@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', \App\Category::getCategories());
         });
         
-        \Blade::setEchoFormat('nl2br(e(%s))');
+        
     }
 
     /**
@@ -52,5 +52,7 @@ class AppServiceProvider extends ServiceProvider
         \Blade::directive('break', function ($num) {
             return "<?php break $num ?>";
         });
+
+        \Blade::setEchoFormat('nl2br(e(%s))');
     }
 }

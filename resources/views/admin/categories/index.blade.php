@@ -28,6 +28,7 @@
                 <th>Name</th>
                 <th>Parent</th>
                 <th>Order</th>
+                <th>Is visible</th>
                 <th>Actions</th>
             </tr>
             @foreach($categories as $category)
@@ -36,10 +37,11 @@
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->parent() }}</td>              
                 <td>{{ $category->category_order }}</td>              
+                <td>{{ $category->is_visible ? 'Yes' : 'No' }}</td>              
                 <td>
-                    <a href="/admin/categories/{{ $category->id }}/edit">Edit</a>
+                    <a href="/admin/categories/{{ $category->name }}/edit">Edit</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <form action="/admin/posts/{{ $category->id }}" method="post" class="app-delete-form confirm-plugin-delete">
+                    <form action="/admin/categories/{{ $category->name }}" method="post" class="app-delete-form confirm-plugin-delete">
 
                         {{ csrf_field() }}
 

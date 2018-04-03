@@ -6,6 +6,7 @@
         <li><a href="/admin/categories">Manage categories</a></li>
         <li><a href="/admin/tags">Manage tags</a></li>
         <li><a href="#">Manage comments</a></li>
+        <li><a href="#">Manage footer</a></li>
         <li><a href="#">Manage users</a></li>
     </ul>
 </div>

@@ -22,4 +22,44 @@ class CategoryController extends Controller
         $categories = Category::get();
     	return view('admin.categories.create', compact('categories'));
     }
+    
+    public function store()
+    {
+        $this->validate(request(), [
+            'parent_id'      => 'integer',
+            'name'           => 'required|regex:/^[^<>]+$/u|unique:categories,name|max:255',
+            'is_visible'     => 'boolean',
+            'category_order' => 'required|integer',
+        ]);
+        
+        Category::create([
+            'parent_id'      => request('parent_id') ?: null,
+            'name'           => request('name'),
+            'is_visible'     => request('is_visible'),
+            'category_order' => request('category_order'),
+        ]);
+        
+    	session()->flash('message', 'The category successfully created!');
+    	return redirect('/admin/categories');
+    }
+    
+    public function edit(Category $category)
+    {
+        $categories = Category::get();
+    	return view('admin.categories.edit', compact('categories', 'category'));
+    }
+    
+    public function update(Category $category)
+    {
+        session()->flash('message', 'The category successfully updated!');
+    	return redirect('/admin/categories');
+    }
+    
+    public function destroy(Category $category)
+    {
+        
+        
+        session()->flash('message', 'The category successfully deleted!');
+    	return back();
+    }
 }

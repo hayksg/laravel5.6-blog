@@ -1,4 +1,5 @@
 @extends('layouts-site/master')
+@section('title')
 
 @section('content')
 

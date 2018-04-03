@@ -1,11 +1,12 @@
-@extends('layouts-admin/admin')
+@extends('layouts-admin/admin-right-flash')
+@section('title', "| Manage tags")
 
 @section('content')          
 
 <div class="blog-post">
     <h3 class="blog-post-title mb-4">Manage Tags</h3>
     
-    <form action="/admin/tags" method="post" class="form-inline">
+    <form action="/admin/tags" method="post" class="form-inline mb-3">
         {{ csrf_field() }}
 
         <div class="form-group">

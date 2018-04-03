@@ -7,10 +7,11 @@
         <hr>
 
         @include('layouts-admin.errors')
+        
         <div class="row">
             <div class="col-lg-6">
-                <form action="/admin/posts" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                <form action="/admin/categories" method="post">
+                    @csrf
 
                     <div class="form-group">
                         <label for="name">Name:</label>
@@ -18,8 +19,9 @@
                     </div>         
 
                     <div class="form-group">
-                        <label for="content">Category:</label>
-                        <select class="form-control" id="category" name="category" required>
+                        <label for="parent_id">Parent:</label>
+                        <select class="form-control" id="parent_id" name="parent_id">
+                            <option value="0"></option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -34,8 +36,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="order">Order:</label>
-                        <input type="text" class="form-control" id="order" name="order" required size="10">
+                        <label for="category_order">Order:</label>
+                        <input type="text" class="form-control" id="category_order" name="category_order" required size="10">
                     </div>  
 
                     <div class="form-group mt-4">

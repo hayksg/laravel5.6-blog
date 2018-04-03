@@ -11,12 +11,9 @@ use App\PostTag;
 
 class PostController extends Controller
 {
-    
-
     public function index()
     {
         $cnt   = 0;
-    	//$posts = Post::get();
     	$posts = Post::with('tags')->get();
 
     	return view('admin.posts.index', compact('posts', 'cnt'));
@@ -35,9 +32,9 @@ class PostController extends Controller
     public function store()
     {        
     	$this->validate(request(), [
-            'title'       => 'required|unique:posts,title|max:255',
+            'title'       => 'required|alpha_dash|unique:posts,title|max:255',
             'content'     => 'required',          
-            'category'    => 'required|alpha_dash',          
+            'category'    => 'required|alpha_dash|max:255',          
             'description' => 'required|regex:/^[^<>]+$/u',
             'file'        => 'required|image|max:10000',
             'tags'        => 'array|alpha_dash',

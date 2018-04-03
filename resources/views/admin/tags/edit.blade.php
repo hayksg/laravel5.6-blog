@@ -1,5 +1,5 @@
-@extends('layouts-admin/admin')
-@section('title', "| $tag->name tag")          
+@extends('layouts-admin/admin-right-flash')
+@section('title', "| edit $tag->name tag")          
 @section('content')          
 
 <div class="row">
