@@ -1,7 +1,7 @@
 @include('layouts-site/header-site')
 @include('layouts-site/nav')
 @include('layouts-site/top')
-@include('layouts-admin/flash')
+@include('layouts-site/flash')
 
 <div class="container">
 

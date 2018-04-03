@@ -239,6 +239,13 @@ textarea {
     z-index: 10;
 }
 
+#flash-message-admin {
+    position: absolute;
+    top: 93px;
+    right: 200px;
+    z-index: 10;
+}
+
  a.btn.disabled, fieldset:disabled a.btn {
     pointer-events: auto;
 }
@@ -306,3 +313,35 @@ a.highlight {
 /* End block */
 
 
+.dashboard {
+    position: relative;
+}
+
+.dashboard span{
+    margin-left: 34px;
+}
+
+.fa-tachometer {
+    position: absolute;
+}
+
+div.category-name {
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+.soc-icons {
+    display: inline-block;
+    background: #428BCA;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+    text-align: center;
+    margin-top: 4px;
+    border-radius: .25rem;
+}
+
+.soc-icons:hover {
+    background: #0056b3;
+}

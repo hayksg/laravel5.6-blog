@@ -34,7 +34,8 @@ $(function(){
     
     // For Flash messenger
     
-    $('#flash-message').delay(5000).fadeOut('slow');
+    $('#flash-message').delay(4000).fadeOut('slow');
+    $('#flash-message-admin').delay(4000).fadeOut('slow');
     
     //
     

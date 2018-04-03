@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Category;
 use App\Tag;
 use App\PostTag;
 
@@ -23,35 +24,39 @@ class PostController extends Controller
 
     public function create()
     {
+        // In this 2 lines we are looking categories which do not have parents
+        $val = Category::whereNotNull('parent_id')->pluck('parent_id');
+        $categories = Category::select()->whereNotIn('id', $val)->get();
+
         $tags = Tag::get();
-    	return view('admin.posts.create', compact('tags'));
+    	return view('admin.posts.create', compact('tags', 'categories'));
     }
 
     public function store()
     {        
     	$this->validate(request(), [
-            'title'       => 'required|unique:posts,title',
+            'title'       => 'required|unique:posts,title|max:255',
             'content'     => 'required',          
-            'description' => 'required',
+            'category'    => 'required|alpha_dash',          
+            'description' => 'required|regex:/^[^<>]+$/u',
             'file'        => 'required|image|max:10000',
-            'tags'        => 'array',
+            'tags'        => 'array|alpha_dash',
+            'is_visible'  => 'in:0,1',
     	]);
 
-    	$title       = trim(htmlentities(request('title'), ENT_QUOTES));
-    	$content     = trim(htmlentities(request('content'), ENT_QUOTES));
-    	$description = trim(htmlentities(request('description'), ENT_QUOTES));
-
     	$post = new Post();
-    	$post->user_id = auth()->id();
-    	$post->title   = $title;
-    	$post->description   = $description;
-    	$post->content = $content;
+    	$post->user_id     = auth()->id();
+    	$post->title       = request('title');
+    	$post->content     = request('content');
+    	$post->category_id = request('category');
+        $post->description = request('description');
+        $post->is_visible  = request('is_visible');
         
         if (request()->hasFile('file')) {
             $filePath  = basename(request()->file->store('public/upload'));
             $post->img = $filePath;
         }
-
+        
     	$post->save();
     	$post->tags()->sync(request('tags'), false); // false for saving, true for updating
         

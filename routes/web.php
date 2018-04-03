@@ -33,16 +33,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/tutorial', 'TutorialController@index');
-
-Route::get('/',                       'PostController@index');
-Route::get('/posts/{post}',           'PostController@show')->name('posts');
-Route::post('/posts/{post}/comments', 'CommentController@store');
-Route::get('/posts/tags/{tag}',       'TagController@index');
 
 Route::group(['middleware' => ['admin']], function () {
+    
     Route::get('/admin',                   'Admin\AdminController@index');
     Route::get('/admin/posts',             'Admin\PostController@index');
     Route::get('/admin/posts/create',      'Admin\PostController@create');
@@ -59,3 +53,11 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/admin/tags',            'Admin\TagController@store');
     Route::delete('/admin/tags/{tag}',    'Admin\TagController@destroy');
 });
+
+
+Route::get('/',                       'PostController@index');
+Route::get('/{category}',             'CategoryController@index');
+Route::get('/posts/{post}',           'PostController@show')->name('posts');
+Route::post('/posts/{post}/comments', 'CommentController@store');
+Route::get('/posts/tags/{tag}',       'TagController@index');
+

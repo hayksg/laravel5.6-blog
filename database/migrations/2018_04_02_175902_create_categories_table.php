@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('parent_id')->nullable()->unsigned(); // All foreign keys must be unsigned
             $table->string('name')->unique();
-            $table->tinyInteger('is_visible')->default(1);
+            $table->boolean('is_visible')->default(1);
             $table->tinyInteger('category_order');
             $table->timestamps();
             $table->index('parent_id');

@@ -1,5 +1,5 @@
    <footer class="blog-footer footer">
-      <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>© 2017 - 2018 by PHP-User. All rights reserved.</p>
       <p>
         <a href="#">Back to top</a>
       </p>

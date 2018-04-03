@@ -10,11 +10,11 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto"> 
                 <li><a class="nav-link" href="#">About Us</a></li>
-                <li><a class="nav-link" href="/tutorial">Tutorial</a></li>
 
                 @if(auth()->user() && auth()->user()->admin === 1)
                 <li><a class="nav-link" href="/admin">Admin</a></li>
                 @endif
+                
             </ul>
 
             <!-- Right Side Of Navbar -->

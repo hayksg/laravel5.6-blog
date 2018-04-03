@@ -9,10 +9,11 @@
       <div class="blog-post mb-2">
         <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid" alt="image">
         <h2 class="blog-post-title mt-4">{{ $post->title }}</h2>
-        <p class="blog-post-meta">
+        <div class="blog-post-meta mt-3">
             <i class="fa fa-calendar"></i>&nbsp;&nbsp;{{ $post->created_at->toFormattedDateString() }} by 
             <strong>{{ $post->user->name }}</strong>
-        </p>
+        </div>
+        <div class="blog-post-meta category-name">Category: <strong>{{ $post->category->name }}</strong></div>
 
         <p>{{ $post->content }}</p>
         

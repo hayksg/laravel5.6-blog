@@ -14,6 +14,7 @@
     <link href="/css/jquery-filestyle.min.css" rel="stylesheet">
     <link href="/css/select2.min.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/custom-checkbox.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
   </head>
 

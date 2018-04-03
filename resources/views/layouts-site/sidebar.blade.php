@@ -11,7 +11,7 @@
 
             @foreach($categories as $category)
             <li>
-                <a href="#">{{ $category->name }}</a>
+                <a href="/{{ $category->name }}">{{ $category->name }}</a>
                 @if(count($category->children))
                     @include('layouts-site.categories',['children' => $category->children])
                 @endif
@@ -51,9 +51,9 @@
     <div class="sidebar-module">
         <h4>Elsewhere</h4>
         <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
+            <li><a href="#"><i class="fa fa-github soc-icons" aria-hidden="true"></i> GitHub</a></li>
+            <li><a href="#"><i class="fa fa-twitter soc-icons" aria-hidden="true"></i> Twitter</a></li>
+            <li><a href="#"><i class="fa fa-facebook soc-icons" aria-hidden="true"></i> Facebook</a></li>
         </ol>
     </div>
     

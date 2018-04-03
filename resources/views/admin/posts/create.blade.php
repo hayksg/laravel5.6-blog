@@ -27,12 +27,28 @@
             </div>
             
             <div class="form-group">
+                <label for="content">Category:</label>
+                <select class="form-control" id="category" name="category" required>
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
+            <div class="form-group">
                 <label for="tags">Tags:</label>
                 <select multiple class="form-control js-example-basic-multiple" id="tags" name="tags[]" multiple="multiple">
                     @foreach($tags as $tag)
                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
                 </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="custom-checkbox">Is Visible:
+                    <input type="checkbox" name="is_visible" value="1">
+                    <span class="checkmark"></span>
+                </label>
             </div>
 
             <div class="form-group">             
