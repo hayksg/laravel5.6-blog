@@ -21,7 +21,7 @@
                     <div class="form-group">
                         <label for="parent_id">Parent:</label>
                         <select class="form-control" id="parent_id" name="parent_id">
-                            <option value="0"></option>
+                            <option value="0">Has no parent</option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
@@ -30,7 +30,7 @@
 
                     <div class="form-group my-4">
                         <label class="custom-checkbox">Is Visible:
-                            <input type="checkbox" name="is_visible" value="1">
+                            <input type="checkbox" name="is_visible" value="on">
                             <span class="checkmark"></span>
                         </label>
                     </div>

@@ -50,7 +50,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/categories/create',          'Admin\CategoryController@create');
     Route::post('/admin/categories',                'Admin\CategoryController@store');
     Route::get('/admin/categories/{category}/edit', 'Admin\CategoryController@edit');
-    Route::get('/admin/categories/{category}',      'Admin\CategoryController@update');
+    Route::put('/admin/categories/{category}',      'Admin\CategoryController@update');
     Route::delete('/admin/categories/{category}',   'Admin\CategoryController@destroy');
 
     Route::get('/admin/tags',             'Admin\TagController@index');

@@ -61,4 +61,11 @@ class Post extends Model
         
     	return $this->belongsToMany(Tag::class);
     }
+    
+    public static function deleteImage($img)
+    {
+        if ($img) {
+            \Storage::delete('public/upload/' . $img);
+        }
+    }
 }

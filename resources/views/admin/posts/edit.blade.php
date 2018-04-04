@@ -9,7 +9,7 @@
     
     @include('layouts-admin.errors')
     
-    <form action="/admin/posts/{{ $post->id }}" method="post">
+    <form action="/admin/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <input type="hidden" name="_method" value="put">
@@ -30,6 +30,19 @@
         </div>
         
         <div class="form-group">
+            <label for="content">Category:</label>
+            <select class="form-control" id="category" name="category" required>
+                @foreach($categories as $category)
+                    @if($category->name === $post->category->name)
+                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    @else
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+        
+        <div class="form-group">
             <label for="tags">Tags:</label>
             <select multiple class="form-control js-example-basic-multiple" id="tags" name="tags[]" multiple="multiple">
 
@@ -47,13 +60,24 @@
                       
             </select>
         </div>
+        
+        <div class="form-group my-4">
+            <label class="custom-checkbox">Is Visible:
+                <input type="checkbox" 
+                       name="is_visible" 
+                       value="{{ $post->is_visible ?: 'on' }}"
+                       {{ $post->is_visible ? 'checked' : '' }}
+                >
+                <span class="checkmark"></span>
+            </label>
+        </div>
 
         <div class="form-group">             
-            <label for="file">Image:</label> 
+            <label for="img">Image:</label> 
             <div class="my-2">
                 <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid admin-img-edit" alt="image">
             </div>
-            <input type="file" name="file" id="file" class="form-control filestyle">
+            <input type="file" name="img" id="img" class="form-control filestyle">
         </div>
         
         <div class="form-group">

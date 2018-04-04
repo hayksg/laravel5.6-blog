@@ -46,14 +46,14 @@
             
             <div class="form-group">
                 <label class="custom-checkbox">Is Visible:
-                    <input type="checkbox" name="is_visible" value="1">
+                    <input type="checkbox" name="is_visible" value="on">
                     <span class="checkmark"></span>
                 </label>
             </div>
 
             <div class="form-group">             
-                <label for="file">Image:</label> 
-                <input type="file" name="file" id="file" class="form-control filestyle" required>
+                <label for="img">Image:</label> 
+                <input type="file" name="img" id="img" class="form-control filestyle">
             </div>
 
             <div class="form-group mt-4">

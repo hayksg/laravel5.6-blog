@@ -345,3 +345,7 @@ div.category-name {
 .soc-icons:hover {
     background: #0056b3;
 }
+
+a.active-color {
+    border-bottom: 2px solid #428BCA;
+}

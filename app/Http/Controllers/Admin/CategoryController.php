@@ -28,8 +28,8 @@ class CategoryController extends Controller
         $this->validate(request(), [
             'parent_id'      => 'integer',
             'name'           => 'required|regex:/^[^<>]+$/u|unique:categories,name|max:255',
-            'is_visible'     => 'boolean',
-            'category_order' => 'required|integer',
+            'is_visible'     => 'in:null,on',
+            'category_order' => 'required|integer|max:255',
         ]);
         
         Category::create([
@@ -51,13 +51,28 @@ class CategoryController extends Controller
     
     public function update(Category $category)
     {
+        $this->validate(request(), [
+            'parent_id'      => 'integer',
+            'name'           => 'required|regex:/^[^<>]+$/u|max:255|unique:categories,name,' . $category->id,
+            'is_visible'     => 'in:null,on',
+            'category_order' => 'required|integer|max:255',
+        ]);
+        
+        $category->update([
+            'parent_id'      => request('parent_id') ?: null,
+            'name'           => request('name'),
+            'is_visible'     => request('is_visible'),
+            'category_order' => request('category_order'),
+        ]);
+        
         session()->flash('message', 'The category successfully updated!');
     	return redirect('/admin/categories');
     }
     
     public function destroy(Category $category)
     {
-        
+        $category->deletePostsImages();
+        $category->delete();
         
         session()->flash('message', 'The category successfully deleted!');
     	return back();

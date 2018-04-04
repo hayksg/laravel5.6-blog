@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $cnt   = 0;
         $perPage = 4;
-    	$posts = Post::with('tags')->where('category_id', $category->id)->paginate($perPage);
+    	$posts = Post::where('is_visible', 'on')->with('tags')->where('category_id', $category->id)->paginate($perPage);
 
     	return view('categories.index', compact('posts', 'cnt'));
     }

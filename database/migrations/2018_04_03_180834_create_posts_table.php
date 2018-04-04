@@ -20,9 +20,9 @@ class CreatePostsTable extends Migration
             $table->string('title')->unique();
             $table->text('description');
             $table->text('content');
-            $table->string('img');
+            $table->string('img')->nullable();
             $table->timestamps();
-            $table->boolean('is_visible')->default(1);
+            $table->string('is_visible')->nullable()->default('on');
             $table->index('category_id');
             $table->index('user_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

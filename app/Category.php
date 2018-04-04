@@ -30,11 +30,58 @@ class Category extends Model
     
     public static function getCategories()
     {
-        return static::where('parent_id', null)->where('is_visible', 1)->get();
+        return static::where('parent_id', null)->where('is_visible', 'on')->get();
     }
     
     public function getRouteKeyName()
     {
         return 'name';
+    }
+    
+    protected function getNestedCategories()
+    {
+        $result = [];
+        
+        $categories = $this->where('parent_id', $this->id)->get();
+        
+        if (! empty($categories)) {
+            foreach ($categories as $category) {
+                if (!empty($category)) {
+                    $result[] = $category;
+                    $result[] = $category->getNestedCategories($category->id);
+                }
+            }
+        }
+        return $result;
+    }  
+    
+    protected function deleteAllNestedCategoriesPostsImages()
+    {
+        $nestedCategories = $this->getNestedCategories();
+        
+        array_walk_recursive($nestedCategories, function($value) {
+            $posts = Post::where('category_id', $value->id)->get();
+             
+            if ($posts && count($posts) > 0) {
+                array_walk_recursive($posts, function($post){
+                    Post::deleteImage($post->img);
+                });
+            }
+        });
+    }
+    
+    protected function deleteCategoryPostsImages()
+    {
+        $posts = $this->posts()->get();
+        
+        foreach ($posts as $post) {          
+            Post::deleteImage($post->img);
+        }
+    }
+    
+    public function deletePostsImages()
+    {
+        $this->deleteCategoryPostsImages();
+        $this->deleteAllNestedCategoriesPostsImages();
     }
 }

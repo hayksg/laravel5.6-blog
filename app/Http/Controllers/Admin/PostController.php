@@ -8,6 +8,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use App\PostTag;
+use Storage;
 
 class PostController extends Controller
 {
@@ -30,15 +31,15 @@ class PostController extends Controller
     }
 
     public function store()
-    {        
+    {     
     	$this->validate(request(), [
-            'title'       => 'required|alpha_dash|unique:posts,title|max:255',
+            'title'       => 'required|regex:/^[^<>]+$/u|unique:posts,title|max:255',
             'content'     => 'required',          
             'category'    => 'required|alpha_dash|max:255',          
             'description' => 'required|regex:/^[^<>]+$/u',
-            'file'        => 'required|image|max:10000',
-            'tags'        => 'array|alpha_dash',
-            'is_visible'  => 'in:0,1',
+            'img'         => 'image|max:10000',
+            'tags'        => 'array',
+            'is_visible'  => 'in:null,on',
     	]);
 
     	$post = new Post();
@@ -49,8 +50,10 @@ class PostController extends Controller
         $post->description = request('description');
         $post->is_visible  = request('is_visible');
         
-        if (request()->hasFile('file')) {
-            $filePath  = basename(request()->file->store('public/upload'));
+        
+        
+        if (request()->hasFile('img')) {
+            $filePath  = basename(request('img')->store('public/upload'));
             $post->img = $filePath;
         }
         
@@ -75,36 +78,44 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $val = Category::whereNotNull('parent_id')->pluck('parent_id');
+        $categories = Category::select()->whereNotIn('id', $val)->get();
+        
         $allTags = Tag::pluck('name', 'id');
 
-        return view('admin.posts.edit', compact('post', 'allTags'));
+        return view('admin.posts.edit', compact('post', 'allTags', 'categories'));
     }
 
     public function update(Post $post)
-    {
+    {  
         $this->validate(request(), [
-            'title'       => 'required|unique:posts,title,' . $post->id,
+            'title'       => 'required|regex:/^[^<>]+$/u|max:255|unique:posts,title,' . $post->id,
             'content'     => 'required',          
             'description' => 'required',
+            'category_id' => 'alpha_dash|max:255', 
+            'img'         => 'image|max:10000',
+            'tags'        => 'array',
+            'is_visible'  => 'in:null,on',
     	]);
-        
-        if (request('file')) {
-            $this->validate(request(), [          
-                'file' => 'image|max:10000',
-    	    ]);
+
+        if (request()->hasFile('img')) {
+            Post::deleteImage($post->img);
+
+            $filePath  = basename(request('img')->store('public/upload'));
+            $post->img = $filePath;
         }
 
-    	$title       = trim(htmlentities(request('title'), ENT_QUOTES));
-    	$content     = trim(htmlentities(request('content'), ENT_QUOTES));
-    	$description = trim(htmlentities(request('description'), ENT_QUOTES));
-
-    	$post->user_id = auth()->id();
-    	$post->title   = $title;
-    	$post->description   = $description;
-    	$post->content = $content;
+    	$post->user_id     = auth()->id();
+    	$post->title       = request('title');
+    	$post->description = request('description');
+        $post->content     = request('content');
+    	$post->category_id    = request('category');
+    	$post->is_visible  = request('is_visible');
         
-        if (request()->hasFile('file')) {
-            $filePath  = basename(request()->file->store('public/upload'));
+        if (request()->hasFile('img')) {
+            Storage::delete('public/upload/' . $post->img);
+            
+            $filePath  = basename(request('img')->store('public/upload'));
             $post->img = $filePath;
         }
 
@@ -112,15 +123,17 @@ class PostController extends Controller
         $post->tags()->sync(request('tags'), true); // false for saving, true for updating
 
         session()->flash('message', 'The post successfully updated!');
-        
         return redirect('admin/posts');
     }
 
     public function destroy(Post $post)
-    {
+    {       
         $post->delete();
         $post->tags()->detach();
-
+        
+        Post::deleteImage($post->img);
+        
+        session()->flash('message', 'The post successfully deleted!');
         return redirect('admin/posts');
     }
 }

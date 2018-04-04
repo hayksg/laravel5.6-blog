@@ -27,11 +27,13 @@
                 <th>#</th>
                 <th>Author</th>
                 <th>Title</th>
+                <th>Category</th>
                 <th>Description</th>
                 <th>Content</th>
                 <th>Created at</th>
                 <th>Image</th>
                 <th>Tags</th>
+                <th>Is visible</th>
                 <th>Actions</th>
             </tr>
             @foreach($posts as $post)
@@ -39,6 +41,7 @@
                 <td>{{ ++$cnt }}</td>
                 <td>{{ $post->user->name }}</td>
                 <td>{{ $post->title }}</td>
+                <td>{{ $post->category->name }}</td>
                 <td>{{ substr($post->description, 0, 10) }}...</td>
                 <td>{{ substr($post->content, 0, 10) }}...</td>
                 <td>{{ $post->created_at->toFormattedDateString() }}</td>
@@ -52,6 +55,7 @@
                         @endforeach
                     @endif
                 </td>
+                <td>{{ $post->is_visible ? 'Yes' : 'No' }}</td> 
                 <td>
                     <a href="/admin/posts/{{ $post->id }}/edit">Edit</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;

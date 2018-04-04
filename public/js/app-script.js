@@ -9,9 +9,19 @@ $(function(){
     }
 
     $('.navbar-nav > li > a[href="'+pathname+'"]').addClass('active');
-
     if ( pathname.match(new RegExp("/admin/")) ) {       
         $('.navbar-nav > li > a[href="/admin"]').addClass('active');
+    }
+    
+    $('.admin-manage-list > li > a[href="'+pathname+'"]').addClass('active-color');
+    if ( pathname.match(new RegExp("/admin/categories")) ) {       
+        $('.admin-manage-list > li > a[href="/admin/categories"]').addClass('active-color');
+    }
+    if ( pathname.match(new RegExp("/admin/posts")) ) {       
+        $('.admin-manage-list > li > a[href="/admin/posts"]').addClass('active-color');
+    }
+    if ( pathname.match(new RegExp("/admin/tags")) ) {       
+        $('.admin-manage-list > li > a[href="/admin/tags"]').addClass('active-color');
     }
 
     // Settings
