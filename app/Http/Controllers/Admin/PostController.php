@@ -9,6 +9,7 @@ use App\Category;
 use App\Tag;
 use App\PostTag;
 use Storage;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -45,7 +46,7 @@ class PostController extends Controller
     	$post = new Post();
     	$post->user_id     = auth()->id();
     	$post->title       = request('title');
-    	$post->content     = request('content');
+    	$post->content     = Purifier::clean(request('content'));
     	$post->category_id = request('category');
         $post->description = request('description');
         $post->is_visible  = request('is_visible');
@@ -108,8 +109,8 @@ class PostController extends Controller
     	$post->user_id     = auth()->id();
     	$post->title       = request('title');
     	$post->description = request('description');
-        $post->content     = request('content');
-    	$post->category_id    = request('category');
+        $post->content     = Purifier::clean(request('content'));
+    	$post->category_id = request('category');
     	$post->is_visible  = request('is_visible');
         
         if (request()->hasFile('img')) {

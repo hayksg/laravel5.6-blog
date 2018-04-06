@@ -48,7 +48,7 @@ class Category extends Model
             foreach ($categories as $category) {
                 if (!empty($category)) {
                     $result[] = $category;
-                    $result[] = $category->getNestedCategories($category->id);
+                    $result[] = $category->getNestedCategories();
                 }
             }
         }

@@ -16,12 +16,12 @@
 
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}">
+            <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}" required>
         </div>
         
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea class="form-control" id="description" name="description">{{ $post->description }}</textarea>
+            <textarea class="form-control" id="description" name="description" required>{{ $post->description }}</textarea>
         </div>
         
         <div class="form-group">

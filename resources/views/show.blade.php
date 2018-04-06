@@ -16,8 +16,7 @@
         </div>
         <div class="blog-post-meta category-name">Category: <strong>{{ $post->category->name }}</strong></div>
 
-        <p>{{ $post->content }}</p>
-        
+        <p>{!! $post->content !!}</p>
         
         @if(count($post->tags))
         <hr>

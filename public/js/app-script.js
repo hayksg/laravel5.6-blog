@@ -137,6 +137,18 @@ $(function(){
         return false;
     });
     
-    //
+    // For text editor TinyMCE
+    
+    if (pathname.match(new RegExp("/admin/posts/create")) ||  
+        pathname.match(new RegExp("/admin/posts/[0-9]+/edit")) ) 
+    {
+        ClassicEditor
+            .create( document.querySelector( '#content' ) )
+            .catch( error => {
+                console.error( error );
+        } );
+    }
+    
+    // 
    
 });

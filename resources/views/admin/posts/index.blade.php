@@ -28,11 +28,9 @@
                 <th>Author</th>
                 <th>Title</th>
                 <th>Category</th>
-                <th>Description</th>
-                <th>Content</th>
                 <th>Created at</th>
                 <th>Image</th>
-                <th>Tags</th>
+                <!-- <th>Tags</th> -->
                 <th>Is visible</th>
                 <th>Actions</th>
             </tr>
@@ -40,12 +38,11 @@
             <tr>
                 <td>{{ ++$cnt }}</td>
                 <td>{{ $post->user->name }}</td>
-                <td>{{ $post->title }}</td>
+                <td>{{ getTitle($post->title) }}</td>
                 <td>{{ $post->category->name }}</td>
-                <td>{{ substr($post->description, 0, 10) }}...</td>
-                <td>{{ substr($post->content, 0, 10) }}...</td>
                 <td>{{ $post->created_at->toFormattedDateString() }}</td>
                 <td><img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid admin-img" alt="image"></td>
+                <!--
                 <td>
                     @if(! count($post->tags))
                         <span>No tags</span>
@@ -55,6 +52,7 @@
                         @endforeach
                     @endif
                 </td>
+                -->
                 <td>{{ $post->is_visible ? 'Yes' : 'No' }}</td> 
                 <td>
                     <a href="/admin/posts/{{ $post->id }}/edit">Edit</a>
