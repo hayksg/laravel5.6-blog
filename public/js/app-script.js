@@ -23,6 +23,9 @@ $(function(){
     if ( pathname.match(new RegExp("/admin/tags")) ) {       
         $('.admin-manage-list > li > a[href="/admin/tags"]').addClass('active-color');
     }
+    if ( pathname.match(new RegExp("/admin/employees")) ) {       
+        $('.admin-manage-list > li > a[href="/admin/employees"]').addClass('active-color');
+    }
 
     // Settings
 
@@ -140,7 +143,10 @@ $(function(){
     // For text editor TinyMCE
     
     if (pathname.match(new RegExp("/admin/posts/create")) ||  
-        pathname.match(new RegExp("/admin/posts/[0-9]+/edit")) ) 
+        pathname.match(new RegExp("/admin/posts/[0-9]+/edit")) ||
+        pathname.match(new RegExp("/admin/employees/create")) ||
+        pathname.match(new RegExp("/admin/employees/[0-9]+/edit"))
+       ) 
     {
         ClassicEditor
             .create( document.querySelector( '#content' ) )
@@ -148,6 +154,58 @@ $(function(){
                 console.error( error );
         } );
     }
+    
+    // Ajax query for about us page
+    
+    $('.employee-ajax').on('click', function(e){
+        e.preventDefault();
+
+//        $.ajaxSetup({
+//            headers: {
+//              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//            }
+//        });
+        
+        // This will only set the header if it is a local request.
+        $.ajaxSetup({
+            beforeSend: function(xhr, type) {
+                if (!type.crossDomain) {
+                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                }
+            },
+        });
+
+        var employeeId = $(this).attr('data-id');
+        
+        $.ajax({
+            url: '/about-us/post',
+            method: 'post',
+            data: {id: employeeId},
+            
+            success: function(result){
+                if (result.success === 1) {
+                    var employee = result.employee;
+
+                    $('#employee-image').attr("src", '/storage/employee/' + employee.img);
+                    
+                    $('#employee-name').html(employee.name);
+                    $('#employee-position').html(employee.position);
+                    $('#employee-performance').hide().html(employee.performance);
+                    $('#employee-performance').slideDown(500);
+                }
+            }
+        });
+    });
+    
+    // About Us page slider
+    
+    $('.carousel-slick').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000
+    });
     
     // 
    

@@ -7,6 +7,7 @@
         <li><a href="/admin/tags">Manage tags</a></li>
         <li><a href="#">Manage comments</a></li>
         <li><a href="#">Manage footer</a></li>
+        <li><a href="/admin/employees">Manage employees</a></li>
         <li><a href="#">Manage users</a></li>
         <li><a href="#">Set favicon</a></li>
         <li><a href="#">Set soc icons</a></li>

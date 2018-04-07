@@ -41,8 +41,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin/posts/create',      'Admin\PostController@create');
     Route::post('/admin/posts',            'Admin\PostController@store');
     Route::get('/admin/posts/{post}/edit', 'Admin\PostController@edit');
-    Route::delete('/admin/posts/{post}',   'Admin\PostController@destroy');
     Route::put('/admin/posts/{post}',      'Admin\PostController@update');
+    Route::delete('/admin/posts/{post}',   'Admin\PostController@destroy');
     
     Route::get('/admin/categories',                 'Admin\CategoryController@index');
     Route::get('/admin/categories/create',          'Admin\CategoryController@create');
@@ -58,10 +58,20 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/admin/tags',            'Admin\TagController@store');
     Route::delete('/admin/tags/{tag}',    'Admin\TagController@destroy');
     
+    Route::get('/admin/employees',                 'Admin\EmployeeController@index');
+    Route::get('/admin/employees/create',          'Admin\EmployeeController@create');
+    Route::post('/admin/employees',                'Admin\EmployeeController@store');
+    Route::get('/admin/employees/{employee}/edit', 'Admin\EmployeeController@edit');
+    Route::put('/admin/employees/{employee}',      'Admin\EmployeeController@update');
+    Route::delete('/admin/employees/{employee}',   'Admin\EmployeeController@destroy');
+    
 });
 
 Route::get('/',                       'PostController@index');
+Route::get('/about-us',               'EmployeeController@index');
+Route::post('/about-us/post',         'EmployeeController@store');
 Route::get('/{category}',             'CategoryController@index');
 Route::get('/posts/{post}',           'PostController@show')->name('posts');
 Route::post('/posts/{post}/comments', 'CommentController@store');
 Route::get('/posts/tags/{tag}',       'TagController@index');
+

@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto"> 
-                <li><a class="nav-link" href="#">About Us</a></li>
+                <li><a class="nav-link" href="/about-us">About Us</a></li>
 
                 @if(auth()->user() && auth()->user()->admin === 1)
                 <li><a class="nav-link" href="/admin">Admin</a></li>

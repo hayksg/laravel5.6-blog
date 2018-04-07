@@ -11,5 +11,6 @@
     <script src="/js/app-script.js" type="text/javascript"></script>
     <script src="/js/scriptbreaker-multiple-accordion-1.js" type="text/javascript"></script>
     <script src="/js/ckeditor.js"></script>
+    <script src="/vendor/slick/slick.min.js"></script>
   </body>
 </html>

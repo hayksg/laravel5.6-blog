@@ -307,7 +307,7 @@ ul.topnav span:first-child {
 }
 
 a.highlight {
-	color: #008BFF;
+    color: #008BFF;
 }
 
 /* End block */
@@ -348,4 +348,13 @@ div.category-name {
 
 a.active-color {
     border-bottom: 2px solid #428BCA;   
+}
+
+.employee-position {
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+a.employee-link:hover {
+    color: #0056b3;
 }
