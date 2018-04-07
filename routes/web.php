@@ -65,6 +65,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::put('/admin/employees/{employee}',      'Admin\EmployeeController@update');
     Route::delete('/admin/employees/{employee}',   'Admin\EmployeeController@destroy');
     
+    Route::get('/admin/favicon',   'Admin\FaviconController@index');
+    Route::post('/admin/favicon',  'Admin\FaviconController@store');
+    
 });
 
 Route::get('/',                       'PostController@index');

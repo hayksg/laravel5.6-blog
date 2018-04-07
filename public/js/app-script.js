@@ -25,7 +25,7 @@ $(function(){
     }
     if ( pathname.match(new RegExp("/admin/employees")) ) {       
         $('.admin-manage-list > li > a[href="/admin/employees"]').addClass('active-color');
-    }
+    }   
 
     // Settings
 

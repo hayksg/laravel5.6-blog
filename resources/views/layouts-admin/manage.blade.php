@@ -9,7 +9,7 @@
         <li><a href="#">Manage footer</a></li>
         <li><a href="/admin/employees">Manage employees</a></li>
         <li><a href="#">Manage users</a></li>
-        <li><a href="#">Set favicon</a></li>
+        <li><a href="/admin/favicon">Set favicon</a></li>
         <li><a href="#">Set soc icons</a></li>
     </ul>
 </div>

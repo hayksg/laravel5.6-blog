@@ -30,7 +30,7 @@ class EmployeeController extends Controller
             'performance' => 'required',
             'salary'      => 'required|regex:/^\d{0,5}(\.\d{2})?$/',
             'hired'       => 'required|date_format:Y-m-d',
-            'img'         => 'required|image|max:10000',
+            'img'         => 'required|image|max:2000',
     	]);
         
         if (request()->hasFile('img')) {
@@ -66,7 +66,7 @@ class EmployeeController extends Controller
             'performance' => 'required',
             'salary'      => 'required|regex:/^\d{0,5}(\.\d{2})?$/',
             'hired'       => 'required|date_format:Y-m-d',
-            'img'         => 'image|max:10000',
+            'img'         => 'image|max:2000',
     	]);
         
         if (request()->hasFile('img')) {

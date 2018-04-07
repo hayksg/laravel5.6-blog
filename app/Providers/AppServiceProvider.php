@@ -20,8 +20,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with('tags', \App\Tag::has('posts')->pluck('name'));
             $view->with('categories', \App\Category::getCategories());
         });
-        
-        
     }
 
     /**

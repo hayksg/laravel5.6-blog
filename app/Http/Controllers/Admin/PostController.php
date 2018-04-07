@@ -38,7 +38,7 @@ class PostController extends Controller
             'content'     => 'required',          
             'category'    => 'required|alpha_dash|max:255',          
             'description' => 'required|regex:/^[^<>]+$/u',
-            'img'         => 'image|max:10000',
+            'img'         => 'image|max:2000',
             'tags'        => 'array',
             'is_visible'  => 'in:null,on',
     	]);
@@ -94,7 +94,7 @@ class PostController extends Controller
             'content'     => 'required',          
             'description' => 'required',
             'category_id' => 'alpha_dash|max:255', 
-            'img'         => 'image|max:10000',
+            'img'         => 'image|max:2000',
             'tags'        => 'array',
             'is_visible'  => 'in:null,on',
     	]);
