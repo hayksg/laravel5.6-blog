@@ -19,7 +19,7 @@ class FaviconController extends Controller
         ]);
         
         $messageStatus = 'message-error';
-        $messageValue  = 'Can not chenge the favicon';
+        $messageValue  = 'Can not change the favicon';
     
         if (request()->hasFile('favicon')) {
             \Storage::delete('public/favicon/favicon.ico');
@@ -32,7 +32,7 @@ class FaviconController extends Controller
             
                 if ($res) {
                     $messageStatus = 'message';
-                    $messageValue  = 'The favicon changed';
+                    $messageValue  = 'The favicon is changed';
                 }
             }
         }

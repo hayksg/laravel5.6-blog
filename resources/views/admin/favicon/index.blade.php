@@ -16,7 +16,7 @@
         
         <div class="form-group">             
             <label for="favicon">Favicon image:</label> 
-            <input type="file" name="favicon" id="favicon" class="form-control filestyle" required>
+            <input type="file" name="favicon" id="favicon" class="filestyle" required>
         </div>
         
         <div class="form-group">  

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Services\Greeting;
 use App\Services\GetYear;
+use Illuminate\Support\Facades\Storage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('archives', \App\Post::getArchives());
             $view->with('tags', \App\Tag::has('posts')->pluck('name'));
             $view->with('categories', \App\Category::getCategories());
+        });
+        
+        view()->composer('layouts-site.footer', function($view){
+            $view->with('footerData', Storage::get('public/footer/text.txt'));
         });
     }
 

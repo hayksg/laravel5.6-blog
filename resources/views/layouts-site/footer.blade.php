@@ -1,5 +1,5 @@
    <footer class="blog-footer footer">
-      <p>© 2017 - 2018 by PHP-User. All rights reserved.</p>
+      <p>{!! $footerData !!}</p>
       <p><a href="#" id="back-to-top">Back to top</a></p>
     </footer>
 
