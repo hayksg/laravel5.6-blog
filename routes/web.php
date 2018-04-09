@@ -71,6 +71,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin/footer',  'Admin\FooterController@index');
     Route::post('/admin/footer', 'Admin\FooterController@store');
     
+    Route::get('/admin/users',            'Admin\UserController@index');
+    Route::get('/admin/users/{user}/edit', 'Admin\UserController@edit');
+    
 });
 
 Route::get('/',                       'PostController@index');

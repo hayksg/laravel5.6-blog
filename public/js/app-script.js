@@ -25,7 +25,10 @@ $(function(){
     }
     if ( pathname.match(new RegExp("/admin/employees")) ) {       
         $('.admin-manage-list > li > a[href="/admin/employees"]').addClass('active-color');
-    }   
+    }  
+    if ( pathname.match(new RegExp("/admin/users")) ) {       
+        $('.admin-manage-list > li > a[href="/admin/users"]').addClass('active-color');
+    } 
 
     // Settings
 
@@ -207,6 +210,23 @@ $(function(){
         autoplaySpeed: 3000
     });
     
-    // 
+    // For users table on Admin area
+    
+    if (pathname.match(new RegExp("/admin/users"))) {
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#usersTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    }
+    
+    //
+    
+    
+    
+    
+    
+    
    
 });
