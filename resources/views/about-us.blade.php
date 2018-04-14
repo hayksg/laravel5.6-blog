@@ -3,26 +3,28 @@
 
 @section('content')     
 
-    @if($employees)
+    @if(!$employees || count($employees) == 0)
+        <h2 class="blog-post-title mb-4"><strong>The list is empty</strong></h2>
+    @else
         <h2 class="blog-post-title mb-4"><strong>Our Team</strong></h2>
         <hr class="mb-4">
         
         <div class="row mb-4">
             <div class="col-sm-12">
-                <h5><strong id="employee-name">{{ $firstEmployee->name }}</strong></h5>
+                <h5><strong id="employee-name">{{ $employees->first()->name }}</strong></h5>
                 <div class="employee-position">
                     <strong id="employee-position">
-                        {{ $firstEmployee->position }}
+                        {{ $employees->first()->position }}
                     </strong>
                 </div>
                 <div class="first-employee text-justify">
                     <div class="row">
                         <div class="col-8" id="employee-performance">
-                            {!! $firstEmployee->performance !!}
+                            {!! $employees->first()->performance !!}
                         </div>
 
                         <div class="col-4">                          
-                            <img src="{{ asset('storage/employee/' . $firstEmployee->img) }}" 
+                            <img src="{{ asset('storage/employee/' . $employees->first()->img) }}" 
                              class="img-fluid" 
                              id="employee-image"
                              alt="image">

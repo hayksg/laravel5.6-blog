@@ -71,13 +71,16 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin/footer',  'Admin\FooterController@index');
     Route::post('/admin/footer', 'Admin\FooterController@store');
     
-    Route::get('/admin/users',            'Admin\UserController@index');
+    Route::get('/admin/users',             'Admin\UserController@index');
     Route::get('/admin/users/{user}/edit', 'Admin\UserController@edit');
+    Route::put('/admin/users/{user}',      'Admin\UserController@update');
+    Route::delete('/admin/users/{user}',   'Admin\UserController@destroy');
     
 });
 
 Route::get('/',                       'PostController@index');
 Route::get('/about-us',               'EmployeeController@index');
+Route::get('/portfolio',              'PortfolioController@index');
 Route::post('/about-us/post',         'EmployeeController@store');
 Route::get('/{category}',             'CategoryController@index');
 Route::get('/posts/{post}',           'PostController@show')->name('posts');

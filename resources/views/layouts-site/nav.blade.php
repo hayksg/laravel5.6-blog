@@ -10,8 +10,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto"> 
                 <li><a class="nav-link" href="/about-us">About Us</a></li>
+                <li><a class="nav-link" href="/portfolio">Portfolio</a></li>
 
-                @if(auth()->user() && auth()->user()->admin === 1)
+                @if( (auth()->user() && auth()->user()->role === 'superadmin') || (auth()->user() && auth()->user()->role === 'admin') )
                 <li><a class="nav-link" href="/admin">Admin</a></li>
                 @endif
                 

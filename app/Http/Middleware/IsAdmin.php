@@ -15,10 +15,18 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && $request->user()->admin == 0) {
-            return redirect()->guest('/');
-        }
+//        if (auth()->check() && $request->user()->admin == 0) {
+//            return redirect()->guest('/');
+//        }
+//        
+//        return $next($request);
         
-        return $next($request);
+          if ( (auth()->check() && $request->user()->role === 'superadmin') || 
+               (auth()->check() && $request->user()->role === 'admin') ) 
+          {
+              return $next($request);
+          }
+          
+          return redirect()->guest('/');
     }
 }

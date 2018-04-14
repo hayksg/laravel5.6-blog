@@ -1,4 +1,4 @@
-@extends('layouts-admin/admin')
+@extends('layouts-admin/admin-right-flash')
 @section('title', "| Manage users")
 
 @section('content')          
@@ -16,7 +16,7 @@
 <div class="row my-4">
     <div class="col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="search" placeholder="Search User or Admin">
+            <input type="text" class="form-control" id="search" placeholder="Search User or Admin" autocomplete="off">
         </div> 
     </div>
 </div>
@@ -33,7 +33,7 @@
         <tr>
             <td>{{ ++$cnt }}</td>
             <td>{{ $user->name }}</td>
-            <td>{{ $user->admin ? 'Admin' : 'User' }}</td>
+            <td>{{ ($user->role === 'admin') ? 'Admin' : 'User' }}</td>
             <td>
                 <a href="/admin/users/{{ $user->id }}/edit">Edit</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
