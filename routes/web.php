@@ -76,6 +76,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::put('/admin/users/{user}',      'Admin\UserController@update');
     Route::delete('/admin/users/{user}',   'Admin\UserController@destroy');
     
+    Route::get('/admin/soc-icons',  'Admin\SocIconController@index');
+    Route::post('/admin/soc-icons', 'Admin\SocIconController@store');
+    
+    Route::get('/admin/comments', 'Admin\CommentController@index');
 });
 
 Route::get('/',                       'PostController@index');
@@ -86,4 +90,3 @@ Route::get('/{category}',             'CategoryController@index');
 Route::get('/posts/{post}',           'PostController@show')->name('posts');
 Route::post('/posts/{post}/comments', 'CommentController@store');
 Route::get('/posts/tags/{tag}',       'TagController@index');
-

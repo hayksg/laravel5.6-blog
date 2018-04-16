@@ -25,6 +25,18 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts-site.footer', function($view){
             $view->with('footerData', Storage::get('public/footer/text.txt'));
         });
+        
+        view()->composer('layouts-site.sidebar', function($view){
+            $view->with('github', Storage::get('public/soc-icons/github.txt'));
+        });
+        
+        view()->composer('layouts-site.sidebar', function($view){
+            $view->with('twitter', Storage::get('public/soc-icons/twitter.txt'));
+        });
+        
+        view()->composer('layouts-site.sidebar', function($view){
+            $view->with('facebook', Storage::get('public/soc-icons/facebook.txt'));
+        });
     }
 
     /**

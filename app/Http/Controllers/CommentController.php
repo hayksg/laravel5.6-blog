@@ -13,7 +13,7 @@ class CommentController extends Controller
     	$this->validate(request(), [
     		'user_id' => 'integer',
     		'post_id' => 'integer',
-    		'content' => 'required|min:2|alpha_dash',
+    		'content' => 'required|min:2|regex:/^[a-zA-Z !,\.-:;]+$/u',
     	]);
         		/*
     	$comment = new Comment();

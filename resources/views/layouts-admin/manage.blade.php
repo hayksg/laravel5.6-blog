@@ -5,11 +5,11 @@
         <li><a href="/admin/posts">Manage posts</a></li>
         <li><a href="/admin/categories">Manage categories</a></li>
         <li><a href="/admin/tags">Manage tags</a></li>
-        <li><a href="#">Manage comments</a></li>
+        <li><a href="/admin/comments">Manage comments</a></li>
         <li><a href="/admin/footer">Manage footer</a></li>
         <li><a href="/admin/employees">Manage employees</a></li>
         <li><a href="/admin/users">Manage users</a></li>
         <li><a href="/admin/favicon">Set favicon</a></li>
-        <li><a href="#">Set soc icons</a></li>
+        <li><a href="/admin/soc-icons">Set soc icons</a></li>
     </ul>
 </div>

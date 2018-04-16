@@ -29,6 +29,9 @@ $(function(){
     if ( pathname.match(new RegExp("/admin/users")) ) {       
         $('.admin-manage-list > li > a[href="/admin/users"]').addClass('active-color');
     } 
+    if ( pathname.match(new RegExp("/admin/comments")) ) {       
+        $('.admin-manage-list > li > a[href="/admin/comments"]').addClass('active-color');
+    } 
 
     // Settings
 
@@ -216,6 +219,17 @@ $(function(){
         $("#search").on("keyup", function() {
             var value = $(this).val().toLowerCase();
             $("#usersTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    }
+    
+    // For comments table on Admin area
+    
+    if (pathname.match(new RegExp("/admin/comments"))) {
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#commentsTable tr").filter(function() {
               $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });

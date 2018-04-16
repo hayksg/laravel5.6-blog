@@ -51,9 +51,21 @@
     <div class="sidebar-module">
         <h4>Elsewhere</h4>
         <ol class="list-unstyled">
-            <li><a href="#"><i class="fa fa-github soc-icons" aria-hidden="true"></i> GitHub</a></li>
-            <li><a href="#"><i class="fa fa-twitter soc-icons" aria-hidden="true"></i> Twitter</a></li>
-            <li><a href="#"><i class="fa fa-facebook soc-icons" aria-hidden="true"></i> Facebook</a></li>
+            <li>
+                <a href="http://github.com/{{ $github }}" target="_blank">
+                    <i class="fa fa-github soc-icons" aria-hidden="true"></i> GitHub
+                </a>
+            </li>
+            <li>
+                <a href="http://twitter.com/{{ $twitter }}" target="_blank">
+                    <i class="fa fa-twitter soc-icons" aria-hidden="true"></i> Twitter
+                </a>
+            </li>
+            <li>
+                <a href="http://facebook.com/{{ $facebook }}" target="_blank">
+                    <i class="fa fa-facebook soc-icons" aria-hidden="true"></i> Facebook
+                </a>
+            </li>
         </ol>
     </div>
     
