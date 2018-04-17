@@ -11,9 +11,9 @@ class CommentController extends Controller
     public function store(Post $post)
     {
     	$this->validate(request(), [
-    		'user_id' => 'integer',
-    		'post_id' => 'integer',
-    		'content' => 'required|min:2|regex:/^[a-zA-Z !,\.-:;]+$/u',
+            'user_id' => 'integer',
+            'post_id' => 'integer',
+            'content' => 'required|min:2|regex:/^[a-zA-Z !,\.-:;]+$/u',
     	]);
         		/*
     	$comment = new Comment();

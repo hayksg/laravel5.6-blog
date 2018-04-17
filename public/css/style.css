@@ -358,3 +358,29 @@ a.active-color {
 a.employee-link:hover {
     color: #0056b3;
 }
+
+@media (min-width: 768px) {
+    .admin-comments-block {
+        position: relative;
+    }
+
+    div.admin-comments-block form.comment-delete {
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+    }
+}
+
+.admin-comments-block {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.admin-comments-block:last-of-type {
+    border-bottom: none;
+}
+
+#admin-comments-form form textarea {
+    min-height: 70px;
+}

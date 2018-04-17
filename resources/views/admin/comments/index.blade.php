@@ -9,6 +9,7 @@
 
 @if(! $posts || count($posts) == 0)
 
+<hr>
 <h5 class="mb-4">The list is empty</h5>
 
 @else
@@ -22,7 +23,7 @@
 </div>
 
 <div class="table-responsive">
-    <table class="table table-hover table-striped" id="commentsTable">
+    <table class="table table-hover table-striped" id="postsTable">
         <tr>
             <th>#</th>
             <th>Article title</th>
@@ -33,7 +34,7 @@
             <td>{{ ++$cnt }}</td>
             <td>{{ $post->title }}</td>
             <td>
-                <a href="/admin/comments/{{ $post->id }}/edit">View</a>              
+                <a href="/admin/comments/{{ $post->id }}/edit">View comment(s)</a>              
             </td>
         </tr>
         @endforeach

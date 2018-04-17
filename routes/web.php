@@ -79,7 +79,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin/soc-icons',  'Admin\SocIconController@index');
     Route::post('/admin/soc-icons', 'Admin\SocIconController@store');
     
-    Route::get('/admin/comments', 'Admin\CommentController@index');
+    Route::get('/admin/comments',              'Admin\CommentController@index');
+    Route::get('/admin/comments/{post}/edit',  'Admin\CommentController@edit');
+    Route::put('/admin/comments/{comment}',    'Admin\CommentController@update');
+    Route::delete('/admin/comments/{comment}', 'Admin\CommentController@delete');
 });
 
 Route::get('/',                       'PostController@index');

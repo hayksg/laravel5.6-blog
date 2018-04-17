@@ -224,12 +224,23 @@ $(function(){
         });
     }
     
-    // For comments table on Admin area
+    // For article with comments table on Admin area
     
     if (pathname.match(new RegExp("/admin/comments"))) {
         $("#search").on("keyup", function() {
             var value = $(this).val().toLowerCase();
-            $("#commentsTable tr").filter(function() {
+            $("#postsTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    }
+    
+    // For comments table on Admin area
+    
+    if (pathname.match(new RegExp("/admin/comments/[0-9]+/edit"))) {
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#admin-comments-form div.admin-comments-block").filter(function() {
               $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
@@ -237,10 +248,4 @@ $(function(){
     
     //
     
-    
-    
-    
-    
-    
-   
 });
