@@ -85,6 +85,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::delete('/admin/comments/{comment}', 'Admin\CommentController@delete');
 });
 
+Route::get('/posts/search', 'PostController@search');
+
 Route::get('/',                       'PostController@index');
 Route::get('/about-us',               'EmployeeController@index');
 Route::get('/portfolio',              'PortfolioController@index');

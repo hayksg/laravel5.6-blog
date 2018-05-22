@@ -13,6 +13,10 @@
     <link href="/css/style.css" rel="stylesheet">
     <link href="/vendor/slick/slick.css" rel="stylesheet" type="text/css">
     <link href="/vendor/slick/slick-theme.css" rel="stylesheet" type="text/css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.js"></script>
   </head>
 
   <body>

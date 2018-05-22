@@ -19,7 +19,9 @@
         </div>
         <div class="blog-post-meta category-name">Category: <strong>{{ $post->category->name }}</strong></div>
 
+        @if($post->img)
         <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid" alt="image">
+        @endif
         
         <p class="mt-4">{{ $post->description }}</p>
         <div><a href="/posts/{{ $post->id }}" class="btn btn-outline-primary btn-sm">Read more &rarr;</a></div>
