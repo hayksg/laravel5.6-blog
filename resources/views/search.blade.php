@@ -2,7 +2,7 @@
 @section('title', "| Search")
 
 @section('content')     
-	<div class="vue-container">
+	<div class="vue-container" v-cloak>
 
 		<form class="mb-4">
 			<div class="form-group">

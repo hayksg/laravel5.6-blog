@@ -384,3 +384,5 @@ a.employee-link:hover {
 #admin-comments-form form textarea {
     min-height: 70px;
 }
+
+[v-cloak] { display:none; }
