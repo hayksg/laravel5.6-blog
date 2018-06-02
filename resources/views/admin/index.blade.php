@@ -1,4 +1,6 @@
 @extends('layouts-admin/admin')
+@section('title', "| Admin area")
+
 @section('content')          
 
 <div class="blog-post">

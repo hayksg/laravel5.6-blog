@@ -35,10 +35,16 @@
 
         <ul class="list-group">
           @foreach($post->comments as $comment)
-          <li class="list-group-item mb-2">
-            <div><strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;[ <small>{{ $comment->created_at->diffForHumans() }} ]</small></div>
-            {{ $comment->content }}
-          </li>
+
+            @if($comment->user) <!-- Do not show comment if user deleted -->
+
+            <li class="list-group-item mb-2">
+              <div><strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;[ <small>{{ $comment->created_at->diffForHumans() }} ]</small></div>
+              {{ $comment->content }}
+            </li>
+
+            @endif
+
           @endforeach
         </ul>
 

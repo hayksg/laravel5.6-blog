@@ -41,4 +41,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function getNameAttribute($value) {
+        return ucfirst($value);
+    }
 }

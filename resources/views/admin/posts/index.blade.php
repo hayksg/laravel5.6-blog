@@ -1,5 +1,5 @@
 @extends('layouts-admin/admin')
-
+@section('title', "| Manage posts")
  
 @section('content') 
 
@@ -41,7 +41,13 @@
                 <td>{{ getTitle($post->title) }}</td>
                 <td>{{ $post->category->name }}</td>
                 <td>{{ $post->created_at->toFormattedDateString() }}</td>
-                <td><img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid admin-img" alt="image"></td>
+                <td>
+                    @if($post->img)
+                        <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid admin-img" alt="image">
+                    @else
+                        No image
+                    @endif
+                </td>
                 <!--
                 <td>
                     @if(! count($post->tags))

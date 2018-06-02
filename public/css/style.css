@@ -34,11 +34,6 @@ h6, .h6 {
   height: 160px; /* Set the fixed height of the footer here */
 }
 
-
-/*
- * Override Bootstrap's default container.
- */
-
 .container {
   max-width: 60rem;
 }
@@ -47,11 +42,6 @@ a:hover, a:focus, input[type="submit"]:active, input[type="submit"]:hover, input
   outline: none;
   text-decoration: none;
 }
-
-
-/*
- * Masthead for nav
- */
 
 .blog-masthead {
   margin-bottom: 3rem;
@@ -126,7 +116,6 @@ div.app-dropdown-logout {
   border-left: .3rem solid transparent;
 }
 
-
 /*
  * Blog name and description
  */
@@ -152,7 +141,6 @@ div.app-dropdown-logout {
   }
 }
 
-
 /*
  * Main column and sidebar layout
  */
@@ -173,7 +161,6 @@ div.app-dropdown-logout {
   margin-bottom: 0;
 }
 
-
 /* Pagination */
 .blog-pagination {
   margin-bottom: 4rem;
@@ -181,7 +168,6 @@ div.app-dropdown-logout {
 .blog-pagination > .btn {
   border-radius: 2rem;
 }
-
 
 /*
  * Blog posts
@@ -195,7 +181,6 @@ div.app-dropdown-logout {
   margin-bottom: 1.25rem;
   color: #999;
 }
-
 
 /*
  * Footer
@@ -312,7 +297,6 @@ a.highlight {
 
 /* End block */
 
-
 .dashboard {
     position: relative;
 }
@@ -383,6 +367,38 @@ a.employee-link:hover {
 
 #admin-comments-form form textarea {
     min-height: 70px;
+}
+
+@media only screen and (max-width: 992px) {
+  div.portfolio-item {
+    margin-bottom: 30px;
+  }
+}
+
+/* Shaking element */
+.post-title:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 [v-cloak] { display:none; }

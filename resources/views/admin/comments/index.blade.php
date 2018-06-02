@@ -1,5 +1,5 @@
 @extends('layouts-admin/admin-right-flash')
-@section('title', "| Manage Comments")
+@section('title', "| Manage comments")
 
 @section('content')          
 

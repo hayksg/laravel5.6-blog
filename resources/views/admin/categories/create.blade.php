@@ -15,12 +15,12 @@
 
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
                     </div>         
 
                     <div class="form-group">
                         <label for="parent_id">Parent:</label>
-                        <select class="form-control" id="parent_id" name="parent_id">
+                        <select class="form-control" id="parent_id" name="parent_id" value="{{ old('parent_id') }}" >
                             <option value="0">Has no parent</option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="category_order">Order:</label>
-                        <input type="text" class="form-control" id="category_order" name="category_order" required size="10">
+                        <input type="text" class="form-control" id="category_order" name="category_order" required size="10" value="{{ old('category_order') }}">
                     </div>  
 
                     <div class="form-group mt-4">

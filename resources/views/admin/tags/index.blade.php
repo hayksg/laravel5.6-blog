@@ -11,39 +11,26 @@
 
         <div class="form-group">
             <label for="name">Tag name:</label>&nbsp;&nbsp;
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" placeholder="create tag" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     @include('layouts-admin.errors')
     <hr class="mt-4">
     
     @if(! count($tags))
-    <h5 class="mt-5 mb-3">List is empty</h5>
+    <h5 class="mt-4 mb-3">List is empty</h5>
     @else
-    <h5 class="mt-5 mb-3">Tags list</h5>
+    <h5 class="mt-4 mb-3">Tag(s) list</h5>
     <div class="row">
         <div class="col-sm-12">
             
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered" style="display: inline-block;">
-                    <thead>
-                        <tr class="">
-                            <th class="" style="width:30px;">#</th>
-                            <th class="">Tag name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($tags as $tag)
-                        <tr class="">
-                            <td class="">{{ ++$cnt }}</td>
-                            <td class=""><a href="/admin/tags/{{ $tag->name }}">{{ $tag->name }}</a></td>              
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+            <ul class="list-unstyled">
+                @foreach($tags as $tag)
+                <li><a href="/admin/tags/{{ $tag->name }}">{{ $tag->name }}</a></li>
+                @endforeach
+            </ul>
             
         </div>
     </div>

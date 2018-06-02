@@ -34,7 +34,7 @@ class EmployeeController extends Controller
     	]);
         
         if (request()->hasFile('img')) {
-            $filePath      = basename(request('img')->store('public/employee'));
+            $filePath = basename(request('img')->store('public/employee'));
         }
         
         Employee::create([

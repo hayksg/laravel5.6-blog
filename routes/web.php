@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
+Route::group(['middleware' => ['auth', 'admin', 'web']], function () {
     
     Route::get('/admin', 'Admin\AdminController@index');
     

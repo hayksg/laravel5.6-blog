@@ -73,13 +73,19 @@
         </div>
 
         <div class="form-group">             
-            <label for="img">Image:</label> 
+            
             <div class="my-2">
-                <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid admin-img-edit" alt="image">
+                @if($post->img)
+                    <label for="img" class="mr-2">Image:</label> 
+                    <img src="{{ asset('storage/upload/' . $post->img) }}" class="img-fluid admin-img-edit" alt="image">
+                @else
+                    No image
+                @endif
             </div>
             <input type="file" name="img" id="img" class="form-control filestyle">
         </div>
         
+        <br>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Update</button>
         </div>

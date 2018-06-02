@@ -5,8 +5,8 @@
 <div class="row">
     <div class="col-sm-6">
         <div class="blog-post">
-            <h3 class="blog-post-title mb-4">Tag name: {{ $tag->name }}</h3>
-            <div>Posts count(s): <small class="badge badge-primary">{{ $tag->posts()->count() }}</small></div>
+            <h3 class="blog-post-title mb-4">Tag name: <strong class="text-danger">{{ $tag->name }}</strong></h3>
+            <div>Related post(s) count: <small class="badge badge-primary">{{ $tag->posts()->count() }}</small></div>
         </div>
     </div>
     <div class="col-sm-6 text-right">
@@ -20,6 +20,9 @@
         </form>
     </div>
 </div>
+
+@if($tag->posts()->count() != 0)
+
 <div class="row my-4">
     <div class="col-sm-12">
         <div class="table-responsive">
@@ -45,6 +48,7 @@
     </div>
 </div>
 
+@endif
 
 @endsection
       

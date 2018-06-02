@@ -22,38 +22,41 @@
     @include('layouts-admin.errors')
 
     @foreach($post->comments as $comment)
-    <div class="admin-comments-block">         
+
+        @if($comment->user) <!-- Do not show comment if user deleted -->
+        <div class="admin-comments-block">         
+            
+            <form action="/admin/comments/{{ $comment->id }}" method="post">
+                
+                @csrf
+                <input type="hidden" name="_method" value="put">
+                
+                <div>
+                    <strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;[ 
+                    <small>{{ $comment->created_at->diffForHumans() }} ]</small>
+                </div>
+                <br>
+                <div class="form-group">
+                    <textarea name="content" class="form-control">{{ $comment->content }}</textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-info">Edit</button>
+                </div>
+            </form>
+            
+            <form action="/admin/comments/{{ $comment->id }}" method="post" class="comment-delete app-delete-form confirm-plugin-delete">
+                {{ csrf_field() }}
+                
+                <input type="hidden" name="_method" value="delete">
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                </div>
+            </form>        
+            
+        </div>
         
-        <form action="/admin/comments/{{ $comment->id }}" method="post">
-            
-            @csrf
-            <input type="hidden" name="_method" value="put">
-            
-            <div>
-                <strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;[ 
-                <small>{{ $comment->created_at->diffForHumans() }} ]</small>
-            </div>
-            <br>
-            <div class="form-group">
-                <textarea name="content" class="form-control">{{ $comment->content }}</textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-outline-info">Edit</button>
-            </div>
-        </form>
-        
-        <form action="/admin/comments/{{ $comment->id }}" method="post" class="comment-delete app-delete-form confirm-plugin-delete">
-            {{ csrf_field() }}
-            
-            <input type="hidden" name="_method" value="delete">
-            
-            <div class="form-group">
-                <button type="submit" class="btn btn-outline-danger">Delete</button>
-            </div>
-        </form>        
-        
-    </div>
-    
+        @endif
     @endforeach
     
     </div>

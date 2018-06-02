@@ -1,5 +1,5 @@
 @extends('layouts-admin/admin-right-flash')
-@section('title', "| Manage Soc Icons")
+@section('title', "| Manage soc icons")
 
 @section('content')          
 
