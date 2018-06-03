@@ -27,7 +27,8 @@
             "App\\": "app/"
         },
         "files": [ 
-            "app/Helpers/getTitle.php" 
+            "app/Helpers/getTitle.php",
+            "app/Helpers/sortNestedCategories.php"
         ]
     },
     "autoload-dev": {

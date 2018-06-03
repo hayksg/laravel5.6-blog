@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index(Category $category)
     {
         $cnt   = 0;
-        $categories = Category::all();
+        $categories = Category::orderBy('category_order', 'asc')->get();
     	
     	return view('admin.categories.index', compact('categories', 'cnt'));
     }

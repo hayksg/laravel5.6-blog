@@ -11,9 +11,10 @@
 
             @foreach($categories as $category)
             <li>
-                <a href="/{{ $category->name }}">{{ $category->name }}</a>
+                <a href="{{ url('/') }}/{{ $category->name }}">{{ $category->name }}</a>
                 @if(count($category->children))
-                    @include('layouts-site.categories',['children' => $category->children])
+                    <!-- sortNestedCategories is a helper -->
+                    @include('layouts-site.categories',['children' => sortNestedCategories($category->children)])
                 @endif
             </li>
             @endforeach
@@ -28,7 +29,7 @@
         <ol class="list-unstyled">
 
             @foreach($archives as $value)
-            <li><a href="/?month={{ $value->month }}&year={{ $value->year }}">{{ $value->month }} {{ $value->year }}</a></li>
+            <li><a href="{{ url('/') }}/?month={{ $value->month }}&year={{ $value->year }}">{{ $value->month }} {{ $value->year }}</a></li>
             @endforeach
 
         </ol>
@@ -41,7 +42,7 @@
         <ol class="list-unstyled">
 
             @foreach($tags as $tag)
-            <li><a href="/posts/tags/{{ $tag }}">{{ $tag }}</a></li>
+            <li><a href="{{ url('/') }}/posts/tags/{{ $tag }}">{{ $tag }}</a></li>
             @endforeach
 
         </ol>

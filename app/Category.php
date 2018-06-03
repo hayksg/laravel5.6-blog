@@ -30,7 +30,7 @@ class Category extends Model
     
     public static function getCategories()
     {
-        return static::where('parent_id', null)->where('is_visible', 'on')->get();
+        return static::where('parent_id', null)->where('is_visible', 'on')->orderBy('category_order', 'asc')->get();
     }
     
     public function getRouteKeyName()

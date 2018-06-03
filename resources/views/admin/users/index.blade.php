@@ -7,6 +7,8 @@
     <h3 class="blog-post-title">Manage Users</h3>
 </div>
 
+<hr>
+
 @if(! $users || count($users) == 0)
 
 <h5 class="mb-4">The list is empty</h5>
