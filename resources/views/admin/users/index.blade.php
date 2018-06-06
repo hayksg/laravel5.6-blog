@@ -37,9 +37,9 @@
             <td>{{ $user->name }}</td>
             <td>{{ ($user->role === 'admin') ? 'Admin' : 'User' }}</td>
             <td>
-                <a href="/admin/users/{{ $user->id }}/edit">Edit</a>
+                <a href="{{ url('/') }}/admin/users/{{ $user->id }}/edit">Edit</a>
                 &nbsp;&nbsp;|&nbsp;&nbsp;
-                <form action="/admin/users/{{ $user->id }}" method="post" class="app-delete-form confirm-plugin-delete">
+                <form action="{{ url('/') }}/admin/users/{{ $user->id }}" method="post" class="app-delete-form confirm-plugin-delete">
 
                     {{ csrf_field() }}
 

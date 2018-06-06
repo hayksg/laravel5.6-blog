@@ -34,7 +34,7 @@
             <td>{{ ++$cnt }}</td>
             <td>{{ $post->title }}</td>
             <td>
-                <a href="/admin/comments/{{ $post->id }}/edit">View comment(s)</a>              
+                <a href="{{ url('/') }}/admin/comments/{{ $post->id }}/edit">View comment(s)</a>              
             </td>
         </tr>
         @endforeach

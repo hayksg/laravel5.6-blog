@@ -6,7 +6,7 @@
 <div class="blog-post">
     <h3 class="blog-post-title mb-4">Manage Tags</h3>
     
-    <form action="/admin/tags" method="post" class="form-inline mb-3">
+    <form action="{{ url('/') }}/admin/tags" method="post" class="form-inline mb-3">
         {{ csrf_field() }}
 
         <div class="form-group">
@@ -28,7 +28,7 @@
             
             <ul class="list-unstyled">
                 @foreach($tags as $tag)
-                <li><a href="/admin/tags/{{ $tag->name }}">{{ $tag->name }}</a></li>
+                <li><a href="{{ url('/') }}/admin/tags/{{ $tag->name }}">{{ $tag->name }}</a></li>
                 @endforeach
             </ul>
             

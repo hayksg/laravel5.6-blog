@@ -10,7 +10,7 @@
 <div class="blog-post">
     <div>Name: <strong>{{ $user->name }}</strong></div>
     <div>Created at: <strong>{{ $user->created_at->toFormattedDateString() }}</strong></div>
-    <form action="/admin/users/{{ $user->id }}" method="post">
+    <form action="{{ url('/') }}/admin/users/{{ $user->id }}" method="post">
         
         @csrf
         <input type="hidden" name="_method" value="put">

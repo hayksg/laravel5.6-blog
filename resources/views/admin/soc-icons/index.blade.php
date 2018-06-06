@@ -7,7 +7,7 @@
     <h3 class="blog-post-title mb-4">Manage Soc Icons</h3>
     <hr>
     
-    <form action="/admin/soc-icons" method="post" class="mb-3">
+    <form action="{{ url('/') }}/admin/soc-icons" method="post" class="mb-3">
         @csrf
 
         <div class="form-group">

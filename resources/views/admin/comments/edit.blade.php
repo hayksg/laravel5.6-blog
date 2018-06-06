@@ -26,7 +26,7 @@
         @if($comment->user) <!-- Do not show comment if user deleted -->
         <div class="admin-comments-block">         
             
-            <form action="/admin/comments/{{ $comment->id }}" method="post">
+            <form action="{{ url('/') }}/admin/comments/{{ $comment->id }}" method="post">
                 
                 @csrf
                 <input type="hidden" name="_method" value="put">
@@ -44,7 +44,7 @@
                 </div>
             </form>
             
-            <form action="/admin/comments/{{ $comment->id }}" method="post" class="comment-delete app-delete-form confirm-plugin-delete">
+            <form action="{{ url('/') }}/admin/comments/{{ $comment->id }}" method="post" class="comment-delete app-delete-form confirm-plugin-delete">
                 {{ csrf_field() }}
                 
                 <input type="hidden" name="_method" value="delete">

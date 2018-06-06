@@ -16,9 +16,11 @@ class PostController extends Controller
     public function index()
     {
         $cnt   = 0;
-    	$posts = Post::with('tags')->get();
+        //$posts = Post::with('tags')->get();
+    	$posts = Post::with('tags')->paginate(10);
+        $perPage = Storage::get('public/per-page/text.txt');
 
-    	return view('admin.posts.index', compact('posts', 'cnt'));
+    	return view('admin.posts.index', compact('posts', 'cnt', 'perPage'));
     }
 
     public function create()
@@ -51,8 +53,6 @@ class PostController extends Controller
         $post->description = request('description');
         $post->is_visible  = request('is_visible');
         
-        
-        
         if (request()->hasFile('img')) {
             $filePath  = basename(request('img')->store('public/upload'));
             $post->img = $filePath;
@@ -60,17 +60,6 @@ class PostController extends Controller
         
     	$post->save();
     	$post->tags()->sync(request('tags'), false); // false for saving, true for updating
-        
-        
-        /*
-        Post::create([
-            'user_id' => auth()->id(),
-            'title'   => $title,
-            'content' => $content
-        ]);
-        */
-
-        //auth()->user()->publish(new Post(request(['title', 'content'])));
         
         session()->flash('message', 'The post successfully created!');
 
@@ -136,5 +125,16 @@ class PostController extends Controller
         
         session()->flash('message', 'The post successfully deleted!');
         return redirect('admin/posts');
+    }
+
+    public function perPage()
+    {
+        $this->validate(request(), [
+            'per-page' => 'required|integer'
+        ]);
+
+        Storage::put('public/per-page/text.txt', request('per-page'));
+
+        return back();
     }
 }

@@ -10,7 +10,7 @@
             <h3 class="blog-post-title mb-4">Manage employees</h3>
         </div>
         <div class="col-sm-6 text-right">
-            <a href="/admin/employees/create" class="btn btn-outline-primary">Add employee</a>
+            <a href="{{ url('/') }}/admin/employees/create" class="btn btn-outline-primary">Add employee</a>
         </div>
     </div>
 
@@ -46,9 +46,9 @@
                 <td>{{ $employee->hired }}</td>
                 <td><img src="{{ asset('storage/employee/' . $employee->img) }}" class="img-fluid admin-img" alt="image"></td>
                 <td>
-                    <a href="/admin/employees/{{ $employee->id }}/edit">Edit</a>
+                    <a href="{{ url('/') }}/admin/employees/{{ $employee->id }}/edit">Edit</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <form action="/admin/employees/{{ $employee->id }}" method="post" class="app-delete-form confirm-plugin-delete">
+                    <form action="{{ url('/') }}/admin/employees/{{ $employee->id }}" method="post" class="app-delete-form confirm-plugin-delete">
 
                         {{ csrf_field() }}
 

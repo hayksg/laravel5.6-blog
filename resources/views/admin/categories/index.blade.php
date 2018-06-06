@@ -9,7 +9,7 @@
             <h3 class="blog-post-title mb-4">Manage categories</h3>
         </div>
         <div class="col-sm-6 text-right">
-            <a href="/admin/categories/create" class="btn btn-outline-primary">Create category</a>
+            <a href="{{ url('/') }}/admin/categories/create" class="btn btn-outline-primary">Create category</a>
         </div>
     </div>
 
@@ -39,9 +39,9 @@
                 <td>{{ $category->category_order }}</td>              
                 <td>{{ $category->is_visible ? 'Yes' : 'No' }}</td>              
                 <td>
-                    <a href="/admin/categories/{{ $category->name }}/edit">Edit</a>
+                    <a href="{{ url('/') }}/admin/categories/{{ $category->name }}/edit">Edit</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <form action="/admin/categories/{{ $category->name }}" method="post" class="app-delete-form confirm-plugin-delete">
+                    <form action="{{ url('/') }}/admin/categories/{{ $category->name }}" method="post" class="app-delete-form confirm-plugin-delete">
 
                         {{ csrf_field() }}
 

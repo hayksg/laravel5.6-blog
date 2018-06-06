@@ -9,13 +9,13 @@
 
     <title>Blog @yield('title', '')</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/j-confirm-action.css" rel="stylesheet">
-    <link href="/css/jquery-filestyle.min.css" rel="stylesheet">
-    <link href="/css/select2.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/j-confirm-action.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/jquery-filestyle.min.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/select2.min.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/custom-checkbox.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/custom-checkbox.css" rel="stylesheet">
+    <link href="{{ url('/') }}/css/style.css" rel="stylesheet">
   </head>
 
   <body>

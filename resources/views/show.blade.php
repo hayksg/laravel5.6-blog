@@ -23,7 +23,9 @@
         <ul class="list-unstyled list-inline">
             <strong>Tags:</strong>&nbsp;&nbsp;
             @foreach($post->tags as $tag)
-            <li class="list-inline-item"><small><a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a></small></li>
+            <li class="list-inline-item">
+              <small><a href="{{ url('/') }}/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a></small>
+            </li>
             @endforeach
         </ul>
         @endif
@@ -39,7 +41,9 @@
             @if($comment->user) <!-- Do not show comment if user deleted -->
 
             <li class="list-group-item mb-2">
-              <div><strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;[ <small>{{ $comment->created_at->diffForHumans() }} ]</small></div>
+              <div>
+                <strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;[ <small>{{ $comment->created_at->diffForHumans() }} ]</small>
+              </div>
               {{ $comment->content }}
             </li>
 
@@ -52,7 +56,7 @@
 
       @include('layouts-admin.errors')
 
-      <form action="/posts/{{ $post->id }}/comments" method="post">
+      <form action="{{ url('/') }}/posts/{{ $post->id }}/comments" method="post">
         {{ csrf_field() }}
 
         <div class="form-group">

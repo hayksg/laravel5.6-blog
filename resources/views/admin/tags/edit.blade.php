@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<form action="/admin/tags/{{ $tag->name }}" method="post" class="form-inline">
+<form action="{{ url('/') }}/admin/tags/{{ $tag->name }}" method="post" class="form-inline">
     {{ csrf_field() }}
     
     <input type="hidden" name="_method" value="put">

@@ -9,7 +9,7 @@
     
     @include('layouts-admin.errors')
     
-    <form action="/admin/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url('/') }}/admin/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <input type="hidden" name="_method" value="put">

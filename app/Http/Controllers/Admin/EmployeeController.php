@@ -48,7 +48,7 @@ class EmployeeController extends Controller
         ]);
         
         session()->flash('message', 'The employee successfully added!');
-        return redirect('admin/employees');
+        return redirect(url('/') . '/admin/employees');
     }
     
     public function edit(Employee $employee)
@@ -85,7 +85,7 @@ class EmployeeController extends Controller
         $employee->update();
 
         session()->flash('message', 'The employee successfully edited!');
-        return redirect('admin/employees');
+        return redirect(url('/') . '/admin/employees');
     }
     
     public function destroy(Employee $employee)

@@ -28,7 +28,7 @@
 
 		<ul v-if="results.length > 0" class="list-group search-results">
             <li v-for="result in results" :key="result.id" class="list-group-item mb-3 li-shadow">
-            	<a :href="'/posts/' + result.id" v-html="highlight(result.title)"></a>
+            	<a :href="locationOrigin + '/posts/' + result.id" v-html="highlight(result.title)"></a>
             </li>
         </ul>
         
@@ -48,7 +48,8 @@
 				keywords: '',
             	results: [],
             	noResultFound: '',
-            	loader: ''
+            	loader: '',
+            	locationOrigin: location.origin
 			},
 			watch: {
 		        keywords(after, before) {
@@ -63,7 +64,7 @@
 		    },
 			methods: {	
 				fetch: _.debounce(function () {
-					axios.post('/api/search', { name: this.keywords })
+					axios.post(this.locationOrigin + '/api/search', { name: this.keywords })
 		                 .then(response => {
 		                 	if (response.data.length > 0) {
 		                 		this.results = response.data;

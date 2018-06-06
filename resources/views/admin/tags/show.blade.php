@@ -11,7 +11,7 @@
     </div>
     <div class="col-sm-6 text-right">
         <a href="/admin/tags/{{ $tag->name }}/edit" class="btn btn-success">Edit</a>
-        <form action="/admin/tags/{{ $tag->name }}" method="post" class="app-delete-form confirm-plugin-delete">
+        <form action="{{ url('/') }}/admin/tags/{{ $tag->name }}" method="post" class="app-delete-form confirm-plugin-delete">
 
             {{ csrf_field() }}
 

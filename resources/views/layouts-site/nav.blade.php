@@ -9,11 +9,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto"> 
-                <li><a class="nav-link" href="/about-us">About Us</a></li>
-                <li><a class="nav-link" href="/portfolio">Portfolio</a></li>
+                <li><a class="nav-link" href="{{ url('/') }}/about-us">About Us</a></li>
+                <li><a class="nav-link" href="{{ url('/') }}/portfolio">Portfolio</a></li>
 
                 @if( (auth()->user() && auth()->user()->role === 'superadmin') || (auth()->user() && auth()->user()->role === 'admin') )
-                <li><a class="nav-link" href="/admin">Admin</a></li>
+                <li><a class="nav-link" href="{{ url('/') }}/admin">Admin</a></li>
                 @endif
                 
             </ul>
@@ -22,8 +22,8 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a class="nav-link" href="/login">{{ __('Login') }}</a></li>
-                    <li><a class="nav-link" href="/register">{{ __('Register') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/') }}/login">{{ __('Login') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/') }}/register">{{ __('Register') }}</a></li>
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -45,7 +45,7 @@
                 @endguest
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="/posts/search"> <i class="fa fa-search" aria-hidden="true"></i></a>
+                    <a class="nav-link" href="{{ url('/') }}/posts/search"> <i class="fa fa-search" aria-hidden="true"></i></a>
                 </li>
             </ul>
         </div>

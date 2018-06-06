@@ -1,32 +1,5 @@
 <?php
 
-/*
-App::bind('App\Billing\Stripe', function(){
-	return new App\Billing\Stripe(config('services.stripe.secret'));
-});
-*/
-
-//$stripe = App::make('App\Billing\Stripe');
-//$stripe = resolve('App\Billing\Stripe');
-//$stripe = app('App\Billing\Stripe');
-//App::instance('\App\Billing\Stripe', $stripe); // do not work ???
-
-//dd($stripe->greeting('Hi'));
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -37,6 +10,7 @@ Route::group(['middleware' => ['auth', 'admin', 'web']], function () {
     
     Route::get('/admin', 'Admin\AdminController@index');
     
+    Route::get('/admin/posts/per-page',    'Admin\PostController@perPage')->name('per-page');
     Route::get('/admin/posts',             'Admin\PostController@index');
     Route::get('/admin/posts/create',      'Admin\PostController@create');
     Route::post('/admin/posts',            'Admin\PostController@store');

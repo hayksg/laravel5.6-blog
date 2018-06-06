@@ -7,7 +7,7 @@
     <h3 class="blog-post-title mb-4">Set favicon</h3>
     <hr>
     
-    <form action="/admin/favicon" method="post" class="mb-3" enctype="multipart/form-data">
+    <form action="{{ url('/') }}/admin/favicon" method="post" class="mb-3" enctype="multipart/form-data">
         @csrf
         
         <div class="my-5">

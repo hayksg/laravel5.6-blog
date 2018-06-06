@@ -6,19 +6,18 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use Carbon\Carbon;
+use Storage;
 
 class PostController extends Controller
 {
     public function index()
     {       
-    	
-        $perPage = 4;
+        $perPage = Storage::get('public/per-page/text.txt');
 		$posts = Post::where('is_visible', 'on')->latest()
                                                 ->filter(request(['month', 'year']))
                                                 ->paginate($perPage)
                                                 ->appends(request()->query());
 		
-
     	return view('index', compact('posts'));
     }
 

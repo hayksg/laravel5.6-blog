@@ -10,7 +10,7 @@
         
         <div class="row">
             <div class="col-lg-6">
-                <form action="/admin/categories" method="post">
+                <form action="{{ url('/') }}/admin/categories" method="post">
                     @csrf
 
                     <div class="form-group">

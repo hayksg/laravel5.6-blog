@@ -1,47 +1,37 @@
 $(function(){
 
     var pathname = window.location.pathname;
+    var href = window.location.href;
 
     // For highlighting menu
 
-    if (pathname == '/') {
-    	$('a.app-navbar-brand').addClass('active');
+    if (pathname == '/blog/') {
+        $('a.app-navbar-brand').addClass('active');
     }
-
-    $('.navbar-nav > li > a[href="'+pathname+'"]').addClass('active');
-    if ( pathname.match(new RegExp("/admin/")) ) {       
-        $('.navbar-nav > li > a[href="/admin"]').addClass('active');
+    $('.navbar-nav > li > a[href="'+href+'"]').addClass('active');
+    
+   
+    var linksLength = $('.admin-manage-list > li > a').length;
+    
+    for (var i = 0; i < linksLength ; i++) {
+        var attrHref = $('.admin-manage-list > li > a').eq(i).attr('href');
+        
+        // Этo регулярное выражение будет true если attrHref полностью есть в href
+        // href может быть длиннее attrHref, но все символы в attrHref есть в href
+        if ( href.match(new RegExp('^' + attrHref)) ) {       
+            $('.admin-manage-list > li > a[href="'+attrHref +'"]').addClass('active-color');   
+        }
     }
     
-    $('.admin-manage-list > li > a[href="'+pathname+'"]').addClass('active-color');
-    if ( pathname.match(new RegExp("/admin/categories")) ) {       
-        $('.admin-manage-list > li > a[href="/admin/categories"]').addClass('active-color');
-    }
-    if ( pathname.match(new RegExp("/admin/posts")) ) {       
-        $('.admin-manage-list > li > a[href="/admin/posts"]').addClass('active-color');
-    }
-    if ( pathname.match(new RegExp("/admin/tags")) ) {       
-        $('.admin-manage-list > li > a[href="/admin/tags"]').addClass('active-color');
-    }
-    if ( pathname.match(new RegExp("/admin/employees")) ) {       
-        $('.admin-manage-list > li > a[href="/admin/employees"]').addClass('active-color');
-    }  
-    if ( pathname.match(new RegExp("/admin/users")) ) {       
-        $('.admin-manage-list > li > a[href="/admin/users"]').addClass('active-color');
-    } 
-    if ( pathname.match(new RegExp("/admin/comments")) ) {       
-        $('.admin-manage-list > li > a[href="/admin/comments"]').addClass('active-color');
-    } 
-
     // Settings
 
     if ($(document).width() < 768) {
-    	$('.app-navbar-brand').addClass('navbar-brand');
-    	$('.navbar-brand').removeClass('app-navbar-brand');
+        $('.app-navbar-brand').addClass('navbar-brand');
+        $('.navbar-brand').removeClass('app-navbar-brand');
 
-    	$('a.active').addClass('hide-after'); // for hidding pseudo class
+        $('a.active').addClass('hide-after'); // for hidding pseudo class
 
-    	$('.navbar-nav').css('paddingLeft', '20px');
+        $('.navbar-nav').css('paddingLeft', '20px');
     }
 
     // For confirm delete
@@ -103,14 +93,14 @@ $(function(){
         openedSign: '<i class="fa fa-caret-down" aria-hidden="true"></i>'
     });
     
-    // In order don't work link witch has children
+    // In order do not work link witch has children
 
     $('ul.topnav li a').on('click', function(){
         if ($(this).parent('li').has('ul').length != 0) {
             return false;
         }
     });
-	
+    
     // To add padding to each nested link in menu
     
     var menuLinks = $('ul.topnav').find('a');
@@ -139,7 +129,7 @@ $(function(){
     
     // Back to top
     
-    $('#back-to-top').click(function () {			
+    $('#back-to-top').click(function () {           
         $('body,html').animate({
             scrollTop: 0
         }, 800);
@@ -192,7 +182,7 @@ $(function(){
                 if (result.success === 1) {
                     var employee = result.employee;
 
-                    $('#employee-image').attr("src", '/storage/employee/' + employee.img);
+                    $('#employee-image').attr("src", location.origin + '/storage/employee/' + employee.img);
                     
                     $('#employee-name').html(employee.name);
                     $('#employee-position').html(employee.position);

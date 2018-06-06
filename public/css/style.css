@@ -369,6 +369,15 @@ a.employee-link:hover {
     min-height: 70px;
 }
 
+.per-page-input {
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.pagination {
+    justify-content: center !important;
+}
+
 @media only screen and (max-width: 992px) {
   div.portfolio-item {
     margin-bottom: 30px;

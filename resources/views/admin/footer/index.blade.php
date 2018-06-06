@@ -7,7 +7,7 @@
     <h3 class="blog-post-title mb-4">Manage footer</h3>
     <hr>
     
-    <form action="/admin/footer" method="post" class="mb-3">
+    <form action="{{ url('/') }}/admin/footer" method="post" class="mb-3">
         @csrf
 
         <div class="form-group">

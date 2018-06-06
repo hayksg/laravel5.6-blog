@@ -8,7 +8,7 @@
 
         @include('layouts-admin.errors')
 
-        <form action="/admin/posts" method="post" enctype="multipart/form-data">
+        <form action="{{ url('/') }}/admin/posts" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="form-group">

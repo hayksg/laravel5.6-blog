@@ -7,9 +7,9 @@
 
     <title>Blog @yield('title', '')</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="{{ url('/') }}/css/bootstrap.min.css" rel="stylesheet">    
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="{{ url('/') }}/css/style.css" rel="stylesheet" type="text/css">
   </head>
 
   <body>

@@ -9,7 +9,7 @@
             <h3 class="blog-post-title mb-4">Manage posts</h3>
         </div>
         <div class="col-sm-6 text-right">
-            <a href="/admin/posts/create" class="btn btn-outline-primary">Create post</a>
+            <a href="{{ url('/') }}/admin/posts/create" class="btn btn-outline-primary">Create post</a>
         </div>
     </div>
 
@@ -20,6 +20,20 @@
     <h5 class="mb-4">The list is empty</h5>
 
     @else
+
+    <div class="per-page-input">
+        <form action="{{ route('per-page') }}" method="get" class="form-inline">
+            <div class="form-group">Posts per page:
+                <input type="text" class="text-center form-control form-control-sm mx-1" name="per-page" size="1" value="{{ $perPage }}">
+            </div>
+
+            <button type="submit" class="btn btn-sm btn-outline-primary">Change</button>
+        </form>
+
+        @if ($errors->has('per-page'))
+            <div><small class="text-danger">{{ $errors->first('per-page') }}</small></div>
+        @endif
+    </div>
 
     <div class="table-responsive">
         <table class="table table-hover table-striped">
@@ -48,22 +62,11 @@
                         No image
                     @endif
                 </td>
-                <!--
-                <td>
-                    @if(! count($post->tags))
-                        <span>No tags</span>
-                    @else
-                        @foreach($post->tags as $tag)
-                        {{ $tag->name }}&nbsp;
-                        @endforeach
-                    @endif
-                </td>
-                -->
                 <td>{{ $post->is_visible ? 'Yes' : 'No' }}</td> 
                 <td>
-                    <a href="/admin/posts/{{ $post->id }}/edit">Edit</a>
+                    <a href="{{ url('/') }}/admin/posts/{{ $post->id }}/edit">Edit</a>
                     &nbsp;&nbsp;|&nbsp;&nbsp;
-                    <form action="/admin/posts/{{ $post->id }}" method="post" class="app-delete-form confirm-plugin-delete">
+                    <form action="{{ url('/') }}/admin/posts/{{ $post->id }}" method="post" class="app-delete-form confirm-plugin-delete">
 
                         {{ csrf_field() }}
 
@@ -76,6 +79,10 @@
         </table>
     </div>
 
+    <div class="my-5">
+        {{ $posts->links() }}
+    </div>
+    
     @endif
 
 </div>

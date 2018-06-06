@@ -11,8 +11,8 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a class="nav-link" href="/login">{{ __('Login') }}</a></li>
-                    <li><a class="nav-link" href="/register">{{ __('Register') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/') }}/login">{{ __('Login') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/') }}/register">{{ __('Register') }}</a></li>
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

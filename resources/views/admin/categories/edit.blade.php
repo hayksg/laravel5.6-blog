@@ -9,7 +9,7 @@
         @include('layouts-admin.errors')
         <div class="row">
             <div class="col-lg-6">
-                <form action="/admin/categories/{{ $category->name }}" method="post">
+                <form action="{{ url('/') }}/admin/categories/{{ $category->name }}" method="post">
                     @csrf
                     
                     <input type="hidden" name="_method" value="put">

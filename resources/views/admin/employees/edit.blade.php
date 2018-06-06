@@ -11,7 +11,7 @@
         
         <div class="row">
             <div class="col-lg-6">
-                <form action="/admin/employees/{{ $employee->id }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('/') }}/admin/employees/{{ $employee->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     
                     <input type="hidden" name="_method" value="put">

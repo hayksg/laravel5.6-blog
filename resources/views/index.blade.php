@@ -11,7 +11,7 @@
 
       <div class="blog-post">
         <h2 class="blog-post-title post-title">
-            <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+            <a href="{{ url('/') }}/posts/{{ $post->id }}">{{ $post->title }}</a>
         </h2>
         <div class="blog-post-meta mt-3">
             <i class="fa fa-calendar"></i>&nbsp;&nbsp;{{ $post->created_at->toFormattedDateString() }} by 
@@ -24,7 +24,7 @@
         @endif
         
         <p class="mt-4">{{ $post->description }}</p>
-        <div><a href="/posts/{{ $post->id }}" class="btn btn-outline-primary btn-sm">Read more &rarr;</a></div>
+        <div><a href="{{ url('/') }}/posts/{{ $post->id }}" class="btn btn-outline-primary btn-sm">Read more &rarr;</a></div>
       </div>
       <hr class="my-5">
 
