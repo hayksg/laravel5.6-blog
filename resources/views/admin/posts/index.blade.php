@@ -21,19 +21,54 @@
 
     @else
 
-    <div class="per-page-input">
-        <form action="{{ route('per-page') }}" method="get" class="form-inline">
-            <div class="form-group">Posts per page:
-                <input type="text" class="text-center form-control form-control-sm mx-1" name="per-page" size="1" value="{{ $perPage }}">
-            </div>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#perpage">Per page</button>
+    <div id="perpage" 
+         class="collapse @if ($errors->has('per-page') || $errors->has('per-category-page') || $errors->has('per-tag-page')) show @endif">
+        <br>
+        <div class="per-page-input">
+            <form action="{{ route('per-page') }}" method="get" class="form-inline">
+                <div class="form-group">Posts per main page:
+                    <input type="text" class="text-center form-control form-control-sm mx-1" name="per-page" size="1" value="{{ $perPage }}">
+                </div>
 
-            <button type="submit" class="btn btn-sm btn-outline-primary">Change</button>
-        </form>
+                <button type="submit" class="btn btn-sm btn-outline-primary">Change</button>
+            </form>
 
-        @if ($errors->has('per-page'))
-            <div><small class="text-danger">{{ $errors->first('per-page') }}</small></div>
-        @endif
+            @if ($errors->has('per-page'))
+                <div><small class="text-danger">{{ $errors->first('per-page') }}</small></div>
+            @endif
+        </div>
+
+        <div class="per-category-page-input">
+            <form action="{{ route('per-category-page') }}" method="get" class="form-inline">
+                <div class="form-group">Posts per category page:
+                    <input type="text" class="text-center form-control form-control-sm mx-1" name="per-category-page" size="1" value="{{ $perCategoryPage }}">
+                </div>
+
+                <button type="submit" class="btn btn-sm btn-outline-primary">Change</button>
+            </form>
+
+            @if ($errors->has('per-category-page'))
+                <div><small class="text-danger">{{ $errors->first('per-category-page') }}</small></div>
+            @endif
+        </div>
+
+        <div class="per-tag-page-input">
+            <form action="{{ route('per-tag-page') }}" method="get" class="form-inline">
+                <div class="form-group">Posts per tag page:
+                    <input type="text" class="text-center form-control form-control-sm mx-1" name="per-tag-page" size="1" value="{{ $perTagPage }}">
+                </div>
+
+                <button type="submit" class="btn btn-sm btn-outline-primary">Change</button>
+            </form>
+
+            @if ($errors->has('per-tag-page'))
+                <div><small class="text-danger">{{ $errors->first('per-tag-page') }}</small></div>
+            @endif
+        </div>
     </div>
+
+    <hr class="mb-5">
 
     <div class="table-responsive">
         <table class="table table-hover table-striped">

@@ -369,9 +369,8 @@ a.employee-link:hover {
     min-height: 70px;
 }
 
-.per-page-input {
+.per-page-input, .per-category-page-input {
   height: 70px;
-  margin-bottom: 10px;
 }
 
 .pagination {

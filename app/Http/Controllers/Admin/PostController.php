@@ -16,11 +16,12 @@ class PostController extends Controller
     public function index()
     {
         $cnt   = 0;
-        //$posts = Post::with('tags')->get();
-    	$posts = Post::with('tags')->paginate(10);
+    	$posts = Post::with('tags')->latest()->paginate(10);
         $perPage = Storage::get('public/per-page/text.txt');
+        $perCategoryPage = Storage::get('public/per-category-page/text.txt');
+        $perTagPage = Storage::get('public/per-tag-page/text.txt');
 
-    	return view('admin.posts.index', compact('posts', 'cnt', 'perPage'));
+    	return view('admin.posts.index', compact('posts', 'cnt', 'perPage', 'perCategoryPage', 'perTagPage'));
     }
 
     public function create()
@@ -134,6 +135,17 @@ class PostController extends Controller
         ]);
 
         Storage::put('public/per-page/text.txt', request('per-page'));
+
+        return back();
+    }
+
+    public function perCategoryPage()
+    {
+        $this->validate(request(), [
+            'per-category-page' => 'required|integer'
+        ]);
+
+        Storage::put('public/per-category-page/text.txt', request('per-category-page'));
 
         return back();
     }

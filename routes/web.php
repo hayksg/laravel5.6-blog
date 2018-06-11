@@ -10,13 +10,14 @@ Route::group(['middleware' => ['auth', 'admin', 'web']], function () {
     
     Route::get('/admin', 'Admin\AdminController@index');
     
-    Route::get('/admin/posts/per-page',    'Admin\PostController@perPage')->name('per-page');
-    Route::get('/admin/posts',             'Admin\PostController@index');
-    Route::get('/admin/posts/create',      'Admin\PostController@create');
-    Route::post('/admin/posts',            'Admin\PostController@store');
-    Route::get('/admin/posts/{post}/edit', 'Admin\PostController@edit');
-    Route::put('/admin/posts/{post}',      'Admin\PostController@update');
-    Route::delete('/admin/posts/{post}',   'Admin\PostController@destroy');
+    Route::get('/admin/posts/per-page',          'Admin\PostController@perPage')->name('per-page');
+    Route::get('/admin/posts/per-category-page', 'Admin\PostController@perCategoryPage')->name('per-category-page');
+    Route::get('/admin/posts',                   'Admin\PostController@index');
+    Route::get('/admin/posts/create',            'Admin\PostController@create');
+    Route::post('/admin/posts',                  'Admin\PostController@store');
+    Route::get('/admin/posts/{post}/edit',       'Admin\PostController@edit');
+    Route::put('/admin/posts/{post}',            'Admin\PostController@update');
+    Route::delete('/admin/posts/{post}',         'Admin\PostController@destroy');
     
     Route::get('/admin/categories',                 'Admin\CategoryController@index');
     Route::get('/admin/categories/create',          'Admin\CategoryController@create');
@@ -68,4 +69,6 @@ Route::post('/about-us/post',         'EmployeeController@store');
 Route::get('/{category}',             'CategoryController@index');
 Route::get('/posts/{post}',           'PostController@show')->name('posts');
 Route::post('/posts/{post}/comments', 'CommentController@store');
+
+Route::get('/posts/tags/per-tag-page','TagController@perTagPage')->name('per-tag-page');
 Route::get('/posts/tags/{tag}',       'TagController@index');

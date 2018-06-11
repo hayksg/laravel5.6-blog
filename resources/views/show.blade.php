@@ -61,7 +61,7 @@
 
         <div class="form-group">
           <label for="content">Add comment:</label>
-          <textarea class="form-control" id="content" name="content" required></textarea>
+          <textarea class="form-control" id="content" name="content" required>{{ old('content') }}</textarea>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Send</button>
