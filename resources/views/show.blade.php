@@ -56,17 +56,21 @@
 
       @include('layouts-admin.errors')
 
-      <form action="{{ url('/') }}/posts/{{ $post->id }}/comments" method="post">
-        {{ csrf_field() }}
+      @guest
+        <div>Sign in to live a comment</div>
+      @else
+        <form action="{{ url('/') }}/posts/{{ $post->id }}/comments" method="post">
+          {{ csrf_field() }}
 
-        <div class="form-group">
-          <label for="content">Add comment:</label>
-          <textarea class="form-control" id="content" name="content" required>{{ old('content') }}</textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Send</button>
-        </div>
-      </form>
+          <div class="form-group">
+            <label for="content">Add comment:</label>
+            <textarea class="form-control" id="content" name="content" required>{{ old('content') }}</textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+      @endguest
 
     @endif
 
