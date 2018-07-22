@@ -53,7 +53,7 @@
 
             <div class="form-group">             
                 <label for="img">Image:</label> 
-                <input type="file" name="img" id="img" class="form-control filestyle" value="{{ old('tags[]') }}">
+                <input type="file" name="img" id="img" class="form-control filestyle">
             </div>
 
             <div class="form-group mt-4">
