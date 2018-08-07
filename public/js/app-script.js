@@ -93,7 +93,7 @@ $(function(){
         openedSign: '<i class="fa fa-caret-down" aria-hidden="true"></i>'
     });
     
-    // In order do not work link witch has children
+    // In order do not work link which has children
 
     $('ul.topnav li a').on('click', function(){
         if ($(this).parent('li').has('ul').length != 0) {
