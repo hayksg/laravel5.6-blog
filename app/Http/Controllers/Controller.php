@@ -10,4 +10,18 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function isPaginationPageExistsInUrl($obj) {
+        $total       = $obj->total();
+        $perPage     = $obj->perPage();
+        $currentPage = $obj->currentPage();
+        
+        $pagesCount = ceil($total / $perPage);
+        
+        if ($pagesCount && $currentPage > $pagesCount) {
+            return false;
+        }
+        
+        return true;
+    }
 }

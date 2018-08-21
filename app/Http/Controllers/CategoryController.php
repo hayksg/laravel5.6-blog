@@ -13,8 +13,12 @@ class CategoryController extends Controller
     {
         $cnt     = 0;
         $perPage = Storage::get('public/per-category-page/text.txt');
-    	$posts   = Post::where('is_visible', 'on')->with('tags')->where('category_id', $category->id)->paginate($perPage);
+    	  $posts   = Post::where('is_visible', 'on')->with('tags')->where('category_id', $category->id)->paginate($perPage);
 
-    	return view('categories.index', compact('posts', 'cnt'));
+        if (! $this->isPaginationPageExistsInUrl($posts)) {
+            return view('errors.404');
+        }
+
+    	  return view('categories.index', compact('posts', 'cnt'));
     }
 }

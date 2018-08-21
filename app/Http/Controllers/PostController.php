@@ -17,6 +17,10 @@ class PostController extends Controller
                                                 ->filter(request(['month', 'year']))
                                                 ->paginate($perPage)
                                                 ->appends(request()->query());
+
+        if (! $this->isPaginationPageExistsInUrl($posts)) {
+            return view('errors.404');
+        }
 		
     	return view('index', compact('posts'));
     }
