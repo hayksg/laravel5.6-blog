@@ -52,31 +52,31 @@
       	locationOrigin: location.origin
 			},
 			watch: {
-		        keywords(after, before) {
-		        	this.fetch();
-		        	this.noResultFound = '';
-		        	this.results = [];
+        keywords(after, before) {
+        	this.fetch();
+        	this.noResultFound = '';
+        	this.results = [];
 
-		        	if (! this.keywords) {
-		        		this.loader = false;
-		        	}
-		        }
-		    },
+        	if (! this.keywords) {
+        		this.loader = false;
+        	}
+        }
+		  },
 			methods: {	
 				fetch: _.debounce(function () {
 					axios.post(this.locationOrigin + '/api/search', { name: this.keywords })
-		                 .then(response => {
-			                 	if (response.data.length > 0) {
-			                 		this.results = response.data;
-			                 		this.noResultFound = '';
-			                 		this.loader = false;
-			                 	} else {
-			                 		this.results = [];
-			                 		this.noResultFound = 'No results found';
-			                 		this.loader = false;
-			                 	}
-		                 })
-		                 .catch(error => {});
+               .then(response => {
+                 	if (response.data.length > 0) {
+                 		this.results = response.data;
+                 		this.noResultFound = '';
+                 		this.loader = false;
+                 	} else {
+                 		this.results = [];
+                 		this.noResultFound = 'No results found';
+                 		this.loader = false;
+                 	}
+               })
+               .catch(error => {});
 			  }, 500),
 
 			  highlight(text) {
