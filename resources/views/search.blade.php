@@ -46,10 +46,10 @@
 			data: {
 				title: 'Search results for',
 				keywords: '',
-            	results: [],
-            	noResultFound: '',
-            	loader: '',
-            	locationOrigin: location.origin
+      	results: [],
+      	noResultFound: '',
+      	loader: '',
+      	locationOrigin: location.origin
 			},
 			watch: {
 		        keywords(after, before) {
@@ -66,27 +66,29 @@
 				fetch: _.debounce(function () {
 					axios.post(this.locationOrigin + '/api/search', { name: this.keywords })
 		                 .then(response => {
-		                 	if (response.data.length > 0) {
-		                 		this.results = response.data;
-		                 		this.noResultFound = '';
-		                 		this.loader = false;
-		                 	} else {
-		                 		this.results = [];
-		                 		this.noResultFound = 'No results found';
-		                 		this.loader = false;
-		                 	}
+			                 	if (response.data.length > 0) {
+			                 		this.results = response.data;
+			                 		this.noResultFound = '';
+			                 		this.loader = false;
+			                 	} else {
+			                 		this.results = [];
+			                 		this.noResultFound = 'No results found';
+			                 		this.loader = false;
+			                 	}
 		                 })
 		                 .catch(error => {});
-			    }, 500),
+			  }, 500),
 
-			    highlight(text) {
-				    return text.replace(new RegExp(this.keywords, 'gi'), '<span class="highlighted">$&</span>');
+			  highlight(text) {
+				  return text.replace(new RegExp(this.keywords, 'gi'), '<span class="highlighted">$&</span>');
 				},
 
 				inputStarted() {
-					this.loader = true;
+					if (this.keywords) {
+        		this.loader = true;
+        	}
 				}
-    		}
+    	}
 		});
 	</script>
 

@@ -37,9 +37,9 @@ class PostController extends Controller
 
     public function searchResults()
     {
-        $query = request('name');
+        $query = trim(request('name'));
 
-        if ($query) {
+        if (! empty($query)) {
             $search = "%" . request('name') . "%";
             $posts = Post::where('title', 'like', $search)->get();
 
