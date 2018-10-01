@@ -31,7 +31,7 @@ h6, .h6 {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 160px; /* Set the fixed height of the footer here */
+  height: 120px; /* Set the fixed height of the footer here */
 }
 
 .container {
@@ -187,7 +187,7 @@ div.app-dropdown-logout {
  */
 
 .blog-footer {
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
@@ -343,18 +343,6 @@ a.employee-link:hover {
     color: #0056b3;
 }
 
-@media (min-width: 768px) {
-    .admin-comments-block {
-        position: relative;
-    }
-
-    div.admin-comments-block form.comment-delete {
-        position: absolute;
-        bottom: 20px;
-        right: 0;
-    }
-}
-
 .admin-comments-block {
     border-bottom: 2px solid #ccc;
     padding-bottom: 20px;
@@ -377,18 +365,50 @@ a.employee-link:hover {
     justify-content: center !important;
 }
 
-@media only screen and (max-width: 992px) {
-  div.portfolio-item {
-    margin-bottom: 30px;
-  }
-}
-
 /* Shaking element */
 .post-title:hover {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
+}
+
+.footer-vertical-aligment {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height: 100%;
+}
+
+#back-to-top-container {
+    display: none;
+}
+
+#back-to-top {
+    color: #007bff;
+    cursor: pointer;
+}
+    
+#back-to-top:hover {
+    color: #0056b3;
+}
+
+@media (min-width: 768px) {
+    .admin-comments-block {
+        position: relative;
+    }
+
+    div.admin-comments-block form.comment-delete {
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+  div.portfolio-item {
+    margin-bottom: 30px;
+  }
 }
 
 @keyframes shake {

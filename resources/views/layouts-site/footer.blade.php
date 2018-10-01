@@ -1,6 +1,6 @@
    <footer class="blog-footer footer">
-      <p>{!! $footerData !!}</p>
-      <p><a href="#" id="back-to-top">Back to top</a></p>
+      <p class="footer-vertical-aligment">{!! $footerData !!}</p>
+      <p id="back-to-top-container"><span id="back-to-top">Back to Top</span></p>
     </footer>
 
     <script src="{{ url('/') }}/js/jquery.js" type="text/javascript"></script>
