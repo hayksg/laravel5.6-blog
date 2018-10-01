@@ -10,7 +10,6 @@ $(function(){
     }
     $('.navbar-nav > li > a[href="'+href+'"]').addClass('active');
     
-   
     var linksLength = $('.admin-manage-list > li > a').length;
     
     for (var i = 0; i < linksLength ; i++) {
@@ -46,7 +45,7 @@ $(function(){
     $('#flash-message').delay(4000).fadeOut('slow');
     $('#flash-message-admin').delay(4000).fadeOut('slow');
     
-    //
+    // Settings for jfilestyle
     
     if ($(document).width() > 432 && $(document).width() < 992) {
         $(":file").jfilestyle({
@@ -74,7 +73,7 @@ $(function(){
     
     $('.js-example-basic-multiple').select2();
    
-    //
+    // Settings
    
     if ($(document).width() < 1330) {
         $('.admin-sidebar div.blog-post').css('paddingRight', '30px');

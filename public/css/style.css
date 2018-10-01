@@ -3,12 +3,6 @@ html {
   min-height: 100%;
 }
 
-@media (min-width: 48em) {
-  html {
-    font-size: 18px;
-  }
-}
-
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
@@ -133,12 +127,6 @@ div.app-dropdown-logout {
 .blog-description {
   font-size: 1.1rem;
   color: #999;
-}
-
-@media (min-width: 40em) {
-  .blog-title {
-    font-size: 3.5rem;
-  }
 }
 
 /*
@@ -408,6 +396,18 @@ a.employee-link:hover {
 @media only screen and (max-width: 992px) {
   div.portfolio-item {
     margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 48em) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 40em) {
+  .blog-title {
+    font-size: 3.5rem;
   }
 }
 
